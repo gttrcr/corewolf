@@ -60,7 +60,7 @@ namespace NetWolf
             byte[] byteData = Encoding.ASCII.GetBytes(input);
             if (mathKernel.Send(byteData) != byteData.Length)
                 throw new Exception();
-            byte[] rec = new byte[1000];
+            byte[] rec = new byte[WLServer.PacketSize];
             int length = mathKernel.Receive(rec);
             string response = Encoding.ASCII.GetString(rec, 0, length);
 

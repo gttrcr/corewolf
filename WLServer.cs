@@ -2,6 +2,7 @@ namespace NetWolf
 {
     class WLServer
     {
+        public static readonly int PacketSize = 1024;
         public static readonly int Port = 1642;
         public static readonly string Name = "wlserver.py";
         public static readonly string Code = @"import socket
@@ -19,7 +20,7 @@ def on_new_client(clientsocket, addr):
     global client_number
     while True:
         try:
-            msg = clientsocket.recv(1024)
+            msg = clientsocket.recv(" + PacketSize + @")
             if not msg:
                 print('Close connection from', addr)
                 clientsocket.close()

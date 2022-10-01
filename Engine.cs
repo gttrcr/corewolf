@@ -1,51 +1,27 @@
-﻿using System.Text;
-
-namespace NetWolf
+﻿namespace NetWolf
 {
-    //public class Engine
-    //{
-    //    //public Link Link { get; private set; }
-    //    public string Text { get; private set; }
-    //
-    //    public Engine(string text = "")
-    //    {
-    //        //Link = link;
-    //        Text = text;
-    //    }
-    //
-    //    public bool IsBooleanTrue()
-    //    {
-    //        return Text == "True";
-    //    }
-    //
-    //    public bool IsBooleanFalse()
-    //    {
-    //        return Text == "False";
-    //    }
-    //}
-
-    //public static class TransferableExtension
-    //{
-    //    public static List<Engine> ToList(this Engine res)
-    //    {
-    //        List<Engine> ret = new();
-    //        int Y = Convert.ToInt32(res.Length(new Engine(res.Link, res.Text)).Text);
-    //        for (int y = 1; y <= Y; y++)
-    //            ret.Add(res.Part(new Engine(res.Link, res.Text), y));
-    //
-    //        return ret;
-    //    }
-    //
-    //    public static List<List<Engine>> ToMatrix(this Engine res)
-    //    {
-    //        List<List<Engine>> ret = new();
-    //        List<Engine> arr = ToList(res);
-    //        for (int i = 0; i < arr.Count; i++)
-    //            ret.Add(ToList(new Engine(res.Link, arr[i].Text)));
-    //
-    //        return ret;
-    //    }
-    //}
+    public static class Ext
+    {
+        //public static List<Engine> ToList(this Engine res)
+        //{
+        //    List<Engine> ret = new();
+        //    int Y = Convert.ToInt32(res.Length(new Engine(res.Link, res.Text)).Text);
+        //    for (int y = 1; y <= Y; y++)
+        //        ret.Add(res.Part(new Engine(res.Link, res.Text), y));
+        //
+        //    return ret;
+        //}
+        //
+        //public static List<List<Engine>> ToMatrix(this Engine res)
+        //{
+        //    List<List<Engine>> ret = new();
+        //    List<Engine> arr = ToList(res);
+        //    for (int i = 0; i < arr.Count; i++)
+        //        ret.Add(ToList(new Engine(res.Link, arr[i].Text)));
+        //
+        //    return ret;
+        //}
+    }
 
     public class Engine
     {
@@ -106,7 +82,7 @@ namespace NetWolf
         private string ValidName()
         {
             string name = Obj.ValidName();
-            ValidNames.Add(name);
+            ValidNames?.Add(name);
             return name;
         }
 
