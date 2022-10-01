@@ -1,7 +1,8 @@
 namespace NetWolf
 {
-    class Py
+    class WLServer
     {
+        public static readonly int Port = 1642;
         public static readonly string Name = "wlserver.py";
         public static readonly string Code = @"import socket
 import _thread
@@ -44,7 +45,7 @@ def on_new_client(clientsocket, addr):
 
 s = socket.socket()
 host = socket.gethostname()
-port = 1642
+port = " + WLServer.Port + @"
 
 print('Server started!')
 print('Waiting for clients...')
