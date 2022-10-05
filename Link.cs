@@ -14,10 +14,9 @@ namespace NetWolf
         private static Mutex wlserverMtx = new Mutex();
         public Engine Engine { get; private set; }
 
-        public Link(string ip = "")
+        public Link(string? ip = null)
         {
-            if (ip == "")
-                ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.ToList().Where(x => x.AddressFamily == AddressFamily.InterNetwork).ToList().First().ToString();
+            ip ??= Dns.GetHostEntry(Dns.GetHostName()).AddressList.ToList().Where(x => x.AddressFamily == AddressFamily.InterNetwork).ToList().First().ToString();
 
             Engine = new Engine(this);
             wolfMtx = new Mutex();

@@ -31,7 +31,7 @@ def on_new_client(clientsocket, addr):
                 clientsocket.send(str.encode(str(result)))
         except socket.error as e:
             if e.args[0] == errno.EWOULDBLOCK:
-                time.sleep(0.01)
+                time.sleep(0.001)
             else:
                 print('Close connection from', addr)
                 clientsocket.close()
