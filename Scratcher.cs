@@ -169,17 +169,6 @@ namespace NetWolf.Scratcher
 
 ";
 
-            //            const string overloadFunctionStructure = @"//TAB_HERE///<summary>
-            ////TAB_HERE/////COMMENT_HERE
-            ////TAB_HERE/////URL_HERE
-            ////TAB_HERE///</summary>
-            ////TAB_HEREpublic static Engine //NAME_HERE(this Engine en, string? name = null)
-            ////TAB_HERE{
-            ////TAB_HERE    return en.Execute(""//NAME_HERE["" + en.ValidNames.Last() + ""]"", name);
-            ////TAB_HERE}
-            //
-            //";
-
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
                 string sourceCode = "";
