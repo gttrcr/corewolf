@@ -2,6 +2,7 @@ using HtmlAgilityPack;
 using System.Net;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace NetWolf.Scratcher
 {
@@ -169,17 +170,6 @@ namespace NetWolf.Scratcher
 
 ";
 
-            //            const string overloadFunctionStructure = @"//TAB_HERE///<summary>
-            ////TAB_HERE/////COMMENT_HERE
-            ////TAB_HERE/////URL_HERE
-            ////TAB_HERE///</summary>
-            ////TAB_HEREpublic static Engine //NAME_HERE(this Engine en, string? name = null)
-            ////TAB_HERE{
-            ////TAB_HERE    return en.Execute(""//NAME_HERE["" + en.ValidNames.Last() + ""]"", name);
-            ////TAB_HERE}
-            //
-            //";
-
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
                 string sourceCode = "";
@@ -194,7 +184,13 @@ namespace NetWolf.Scratcher
                         string argumentsObject = string.Join(", ", proto.ArgsType);
                         if (argumentsObject != "")
                             argumentsObject += ", ";
-                        string argument = string.Join(" + \", \" + ", proto.ArgsType.Select(x => x.Split(' ').Last()));
+                        string argument = string.Join(" + \", \" + ", proto.ArgsType.Select(x =>
+                        {
+                            string body = x.Split(' ').Last();
+                            if (x.StartsWith("List"))
+                                return "\"{\" + string.Join(',', " + body + ") + \"}\"";
+                            return body;
+                        }));
                         if (argument != "")
                             argument = "\" + " + argument + " + \"";
 
@@ -203,7 +199,7 @@ namespace NetWolf.Scratcher
                         .Replace("//COMMENT_HERE", proto.Comment)
                         .Replace("//URL_HERE", functionCommands[i].Url)
                         .Replace("//NAME_HERE", functionCommands[i].Name)
-                        .Replace("//ARGUMENTS_OBJECT_HERE, ", argumentsObject)
+                        .Replace("//ARGUMENTS_OBJECT_HERE, ", argumentsObject.Replace("object", "string"))
                         .Replace("//ARGUMENTS_HERE", argument);
                     }
                 }
@@ -219,16 +215,15 @@ namespace NetWolf.Scratcher
             }
         }
 
-        public static void Start()
+        public static void Main()
         {
             if (!Directory.Exists(baseFolder))
-            {
                 Directory.CreateDirectory(baseFolder);
-                CreateJsonFile();
-            }
-            else if (!File.Exists(baseFolder + "/BuiltinSymbols.json"))
+
+            if (!File.Exists(baseFolder + "/BuiltinSymbols.json"))
                 CreateJsonFile();
 
+            Enumerable.Range('A', 'Z' - 'A' + 1).ToList().ForEach(x => File.Delete(baseFolder + "/BuiltinSymbols" + ((char)x) + ".cs"));
             CreateFromJsonFile();
         }
     }

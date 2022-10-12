@@ -1,9 +1,9 @@
 namespace NetWolf
 {
-    public static class ExtensionMethodsBuiltinSymbolsE
+    public static class ExtendedBuiltinSymbolsE
     {
         ///<summary>
-        ///export last command
+        ///exports last data to a file, converting it to the format corresponding to the file extension ext.
         ///</summary>
         public static Engine Export(this Engine en, string path, string? name = null)
         {
