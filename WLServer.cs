@@ -2,7 +2,7 @@ namespace NetWolf
 {
     class WLServer
     {
-        public static readonly int PacketSize = 1024;
+        public static readonly int PacketSize = 131072;
         public static readonly int Port = 1642;
         public static readonly string Name = "wlserver.py";
         public static readonly string Code = @"import socket

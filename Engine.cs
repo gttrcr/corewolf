@@ -15,16 +15,17 @@
             ValidNames = new List<string>();
         }
 
-        private string ValidName()
+        private void ValidName(ref string? name)
         {
-            string name = Obj.ValidName();
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            name ??= new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
             ValidNames?.Add(name);
-            return name;
         }
 
         public Engine Execute(string input, string? name = null)
         {
-            name ??= ValidName();
+            ValidName(ref name);
             Text = Link.ToEngine(name + "=(" + input + ")");
             return this;
         }

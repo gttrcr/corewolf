@@ -57,8 +57,10 @@ namespace NetWolf
             wolfMtx.WaitOne();
 
             byte[] byteData = Encoding.ASCII.GetBytes(input);
+            if (byteData.Length > WLServer.PacketSize)
+                throw new OverflowException("WLServer input string is larger than the maximum allowable package size of " + WLServer.PacketSize + " bytes");
             if (mathKernel.Send(byteData) != byteData.Length)
-                throw new Exception();
+                throw new Exception("The size of the sent message differs from the original size of the message");
             byte[] rec = new byte[WLServer.PacketSize];
             int length = mathKernel.Receive(rec);
             string response = Encoding.ASCII.GetString(rec, 0, length);
