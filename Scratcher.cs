@@ -2,7 +2,6 @@ using HtmlAgilityPack;
 using System.Net;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
-using System.Linq;
 
 namespace NetWolf.Scratcher
 {
