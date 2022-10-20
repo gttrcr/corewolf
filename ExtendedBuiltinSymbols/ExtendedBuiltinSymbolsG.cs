@@ -11,7 +11,7 @@ namespace NetWolf
         }
     }
 
-    public class GraphObj : WLObj
+    public class GraphObj
     {
         public List<string> Edges { get; set; }
         public List<string> Vertex { get; set; }

@@ -1,6 +1,6 @@
 namespace NetWolf
 {
-    public class Assumptions : WLObj
+    public class Assumptions
     {
         public List<string> AssList { get; set; }
 
