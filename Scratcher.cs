@@ -246,6 +246,15 @@ namespace NetWolf.Scratcher
 }".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", extendedSymbolsSourceCode);
                 File.WriteAllText(extendedSymbolsBaseFolder + "/ExtendedSymbols" + ch + ".cs", extendedSymbolsSourceCode);
             }
+
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C dotnet format";
+            process.StartInfo = startInfo;
+            process.Start();
+            process.WaitForExit();
         }
 
         public static void Main()
