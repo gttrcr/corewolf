@@ -7,7 +7,9 @@ namespace NetWolf.Scratcher
 {
     public static class Scratcher
     {
-        private static readonly string baseFolder = "BuiltinSymbols";
+        private static readonly string buildinSymbolsJsonFile = "BuiltinSymbols.json";
+        private static readonly string buildinSymbolsBaseFolder = "BuiltinSymbols";
+        private static readonly string extendedSymbolsBaseFolder = "ExtendedSymbols";
 
         private static string? GetHTMLCode(string url, int attempt = 10)
         {
@@ -149,16 +151,16 @@ namespace NetWolf.Scratcher
             });
 
             commands = commands.OrderBy(x => x.Name).ToList();
-            File.WriteAllText(baseFolder + "/BuiltinSymbols.json", JsonConvert.SerializeObject(commands));
+            File.WriteAllText(buildinSymbolsJsonFile, JsonConvert.SerializeObject(commands));
         }
 
-        private static void CreateFromJsonFile()
+        private static void CreateSymbols()
         {
-            List<Command>? commands = JsonConvert.DeserializeObject<List<Command>>(File.ReadAllText(baseFolder + "/BuiltinSymbols.json"));
+            List<Command>? commands = JsonConvert.DeserializeObject<List<Command>>(File.ReadAllText(buildinSymbolsJsonFile));
             if (commands == null)
                 return;
 
-            const string functionStructure = @"//TAB_HERE///<summary>
+            const string buildinSymbolFunctionStructure = @"//TAB_HERE///<summary>
 //TAB_HERE/////COMMENT_HERE
 //TAB_HERE/////URL_HERE
 //TAB_HERE///</summary>
@@ -169,9 +171,22 @@ namespace NetWolf.Scratcher
 
 ";
 
+            const string extendedSymbolFunctionStructure = @"//TAB_HERE///<summary>
+//TAB_HERE/////COMMENT_HERE
+//TAB_HERE/////URL_HERE
+//TAB_HERE///</summary>
+//TAB_HEREpublic static Engine //NAME_HERE(this Engine en, string? name = null)
+//TAB_HERE{
+//TAB_HERE//TAB_HEREreturn en.Execute(""//NAME_HERE["" + en.ValidNames.Last() + ""]"", name);
+//TAB_HERE}
+
+";
+
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
-                string sourceCode = "";
+                List<string> extendedOverloadCheck = new List<string>();
+                string buildinSymbolsSourceCode = "";
+                string extendedSymbolsSourceCode = "";
                 List<Command> functionCommands = commands.Where(x => x.Name.StartsWith(ch) && x.Type == Type.Function).ToList();
                 for (int i = 0; i < functionCommands.Count; i++)
                 {
@@ -193,37 +208,60 @@ namespace NetWolf.Scratcher
                         if (argument != "")
                             argument = "\" + " + argument + " + \"";
 
-                        sourceCode += functionStructure
+                        buildinSymbolsSourceCode += buildinSymbolFunctionStructure
                         .Replace("//TAB_HERE", "\t\t")
                         .Replace("//COMMENT_HERE", proto.Comment)
                         .Replace("//URL_HERE", functionCommands[i].Url)
                         .Replace("//NAME_HERE", functionCommands[i].Name)
                         .Replace("//ARGUMENTS_OBJECT_HERE, ", argumentsObject.Replace("object", "string"))
                         .Replace("//ARGUMENTS_HERE", argument);
+
+                        if (proto.ArgsType.Count == 1 && !extendedOverloadCheck.Contains(c.Name))
+                        {
+                            extendedOverloadCheck.Add(c.Name);
+                            extendedSymbolsSourceCode += extendedSymbolFunctionStructure
+                            .Replace("//TAB_HERE", "\t\t")
+                            .Replace("//COMMENT_HERE", proto.Comment)
+                            .Replace("//URL_HERE", functionCommands[i].Url)
+                            .Replace("//NAME_HERE", functionCommands[i].Name);
+                        }
                     }
                 }
 
-                sourceCode = @"namespace NetWolf
+                buildinSymbolsSourceCode = @"namespace NetWolf
 {
     public static class BuiltinSymbol//CHAR_HERE
     {
 //SOURCE_CODE_HERE
     }
-}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", sourceCode);
-                File.WriteAllText(baseFolder + "/BuiltinSymbols" + ch + ".cs", sourceCode);
+}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", buildinSymbolsSourceCode);
+                File.WriteAllText(buildinSymbolsBaseFolder + "/BuiltinSymbols" + ch + ".cs", buildinSymbolsSourceCode);
+
+                extendedSymbolsSourceCode = @"namespace NetWolf
+{
+    public static class ExtendedSymbols//CHAR_HERE
+    {
+//SOURCE_CODE_HERE
+    }
+}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", extendedSymbolsSourceCode);
+                File.WriteAllText(extendedSymbolsBaseFolder + "/ExtendedSymbols" + ch + ".cs", extendedSymbolsSourceCode);
             }
         }
 
         public static void Main()
         {
-            if (!Directory.Exists(baseFolder))
-                Directory.CreateDirectory(baseFolder);
-
-            if (!File.Exists(baseFolder + "/BuiltinSymbols.json"))
+            if (!File.Exists(buildinSymbolsJsonFile))
                 CreateJsonFile();
 
-            Enumerable.Range('A', 'Z' - 'A' + 1).ToList().ForEach(x => File.Delete(baseFolder + "/BuiltinSymbols" + ((char)x) + ".cs"));
-            CreateFromJsonFile();
+            if (Directory.Exists(buildinSymbolsBaseFolder))
+                Directory.Delete(buildinSymbolsBaseFolder, true);
+            if (Directory.Exists(extendedSymbolsBaseFolder))
+                Directory.Delete(extendedSymbolsBaseFolder, true);
+
+            Directory.CreateDirectory(buildinSymbolsBaseFolder);
+            Directory.CreateDirectory(extendedSymbolsBaseFolder);
+
+            CreateSymbols();
         }
     }
 }
