@@ -213,7 +213,7 @@ namespace NetWolf.Scratcher
                         .Replace("//COMMENT_HERE", proto.Comment)
                         .Replace("//URL_HERE", functionCommands[i].Url)
                         .Replace("//NAME_HERE", functionCommands[i].Name)
-                        .Replace("//ARGUMENTS_OBJECT_HERE, ", argumentsObject.Replace("object", "string"))
+                        .Replace("//ARGUMENTS_OBJECT_HERE, ", argumentsObject) //.Replace("object", "string"))
                         .Replace("//ARGUMENTS_HERE", argument);
 
                         if (proto.ArgsType.Count == 1 && !extendedOverloadCheck.Contains(c.Name))
