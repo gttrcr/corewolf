@@ -3,7 +3,7 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
-namespace NetWolf.Scratcher
+namespace CoreWolf.Scratcher
 {
     public static class Scratcher
     {
@@ -228,7 +228,7 @@ namespace NetWolf.Scratcher
                     }
                 }
 
-                buildinSymbolsSourceCode = @"namespace NetWolf
+                buildinSymbolsSourceCode = @"namespace CoreWolf
 {
     public static class BuiltinSymbol//CHAR_HERE
     {
@@ -237,7 +237,7 @@ namespace NetWolf.Scratcher
 }".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", buildinSymbolsSourceCode);
                 File.WriteAllText(buildinSymbolsBaseFolder + "/BuiltinSymbols" + ch + ".cs", buildinSymbolsSourceCode);
 
-                extendedSymbolsSourceCode = @"namespace NetWolf
+                extendedSymbolsSourceCode = @"namespace CoreWolf
 {
     public static class ExtendedSymbols//CHAR_HERE
     {

@@ -1,4 +1,4 @@
-namespace NetWolf
+namespace CoreWolf
 {
     public static class BuiltinSymbolG
     {

@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Diagnostics;
 using System.Text;
 
-namespace NetWolf
+namespace CoreWolf
 {
     public class Link
     {

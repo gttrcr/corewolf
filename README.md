@@ -1,25 +1,25 @@
-# NetWolf
+# CoreWolf
 
-## What is NetWolf?
+## What is CoreWolf?
 1. Do you use Mathematica extensively or wolfram engine/script/kernel/one/alpha?
 2. Are you looking for an **easy** and **cross-platform** library to integrate wolfram into your software?
 3. Don't you want to remember the syntax of the commands and the lexicon created for the wolfram language (WL)?
 
-NetWolf is exactly what you need and didn't know you needed.
+CoreWolf is exactly what you need and didn't know you needed.
 
-NetWolf is an open source c# library that allows you to fully interact with wolfram language by integrating all more than 6500 buildin symbols of engine. Unlike the c# library *NETLink* developed by Wolfram but usable only on Windows platform, NetWolf is developed in .NET Core and therefore usable on Windows, Linux, MacOS and all OS supported by .NET Core.
+CoreWolf is an open source c# library that allows you to fully interact with wolfram language by integrating all more than 6500 buildin symbols of engine. Unlike the c# library *NETLink* developed by Wolfram but usable only on Windows platform, CoreWolf is developed in .NET Core and therefore usable on Windows, Linux, MacOS and all OS supported by .NET Core.
 
-## How to use NetWolf?
+## How to use CoreWolf?
 The code can be compiled by running the command
 ```
 dotnet build
 ```
-and the **NetWolf.dll** library will be produced.
+and the **CoreWolf.dll** library will be produced.
 The library can be imported into your project and used. Here are some examples:
 
 ### Perform a simple operation (sum)
 ```
-using NetWolf; //import the library
+using CoreWolf; //import the library
 Link link = new Link();  //class link
 Engine en = link.Engine;  //get the engine
 en.Execute("17+5");  //use the engine to Execute a command

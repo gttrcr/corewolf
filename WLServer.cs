@@ -1,4 +1,4 @@
-namespace NetWolf
+namespace CoreWolf
 {
     class WLServer
     {
