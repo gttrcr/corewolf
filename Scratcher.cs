@@ -7,9 +7,9 @@ namespace CoreWolf.Scratcher
 {
     public static class Scratcher
     {
-        private static readonly string buildinSymbolsJsonFile = "BuiltinSymbols.json";
-        private static readonly string buildinSymbolsBaseFolder = "BuiltinSymbols";
-        private static readonly string extendedSymbolsBaseFolder = "ExtendedSymbols";
+        private static readonly string builtinSymbolsJsonFile = "BuiltinSymbols.json";
+        private static readonly string builtinFunctionsBaseFolder = "BuiltinFunctions";
+        private static readonly string extendedFunctionsBaseFolder = "ExtendedFunctions";
 
         private static string? GetHTMLCode(string url, int attempt = 10)
         {
@@ -151,16 +151,16 @@ namespace CoreWolf.Scratcher
             });
 
             commands = commands.OrderBy(x => x.Name).ToList();
-            File.WriteAllText(buildinSymbolsJsonFile, JsonConvert.SerializeObject(commands));
+            File.WriteAllText(builtinSymbolsJsonFile, JsonConvert.SerializeObject(commands));
         }
 
-        private static void CreateSymbols()
+        private static void CreateBuiltinFunctions()
         {
-            List<Command>? commands = JsonConvert.DeserializeObject<List<Command>>(File.ReadAllText(buildinSymbolsJsonFile));
+            List<Command>? commands = JsonConvert.DeserializeObject<List<Command>>(File.ReadAllText(builtinSymbolsJsonFile));
             if (commands == null)
                 return;
 
-            const string buildinSymbolFunctionStructure = @"//TAB_HERE///<summary>
+            const string builtinFunctionStructure = @"//TAB_HERE///<summary>
 //TAB_HERE/////COMMENT_HERE
 //TAB_HERE/////URL_HERE
 //TAB_HERE///</summary>
@@ -171,7 +171,7 @@ namespace CoreWolf.Scratcher
 
 ";
 
-            const string extendedSymbolFunctionStructure = @"//TAB_HERE///<summary>
+            const string extendedFunctionStructure = @"//TAB_HERE///<summary>
 //TAB_HERE/////COMMENT_HERE
 //TAB_HERE/////URL_HERE
 //TAB_HERE///</summary>
@@ -185,8 +185,8 @@ namespace CoreWolf.Scratcher
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
                 List<string> extendedOverloadCheck = new List<string>();
-                string buildinSymbolsSourceCode = "";
-                string extendedSymbolsSourceCode = "";
+                string builtinFunctionsSourceCode = "";
+                string extendedFunctionsSourceCode = "";
                 List<Command> functionCommands = commands.Where(x => x.Name.StartsWith(ch) && x.Type == Type.Function).ToList();
                 for (int i = 0; i < functionCommands.Count; i++)
                 {
@@ -208,7 +208,7 @@ namespace CoreWolf.Scratcher
                         if (argument != "")
                             argument = "\" + " + argument + " + \"";
 
-                        buildinSymbolsSourceCode += buildinSymbolFunctionStructure
+                        builtinFunctionsSourceCode += builtinFunctionStructure
                         .Replace("//TAB_HERE", "\t\t")
                         .Replace("//COMMENT_HERE", proto.Comment)
                         .Replace("//URL_HERE", functionCommands[i].Url)
@@ -219,7 +219,7 @@ namespace CoreWolf.Scratcher
                         if (proto.ArgsType.Count == 1 && !extendedOverloadCheck.Contains(c.Name))
                         {
                             extendedOverloadCheck.Add(c.Name);
-                            extendedSymbolsSourceCode += extendedSymbolFunctionStructure
+                            extendedFunctionsSourceCode += extendedFunctionStructure
                             .Replace("//TAB_HERE", "\t\t")
                             .Replace("//COMMENT_HERE", proto.Comment)
                             .Replace("//URL_HERE", functionCommands[i].Url)
@@ -228,23 +228,23 @@ namespace CoreWolf.Scratcher
                     }
                 }
 
-                buildinSymbolsSourceCode = @"namespace CoreWolf
+                builtinFunctionsSourceCode = @"namespace CoreWolf
 {
-    public static class BuiltinSymbol//CHAR_HERE
+    public static class BuiltinFunction//CHAR_HERE
     {
 //SOURCE_CODE_HERE
     }
-}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", buildinSymbolsSourceCode);
-                File.WriteAllText(buildinSymbolsBaseFolder + "/BuiltinSymbols" + ch + ".cs", buildinSymbolsSourceCode);
+}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", builtinFunctionsSourceCode);
+                File.WriteAllText(builtinFunctionsBaseFolder + "/BuiltinFunctions" + ch + ".cs", builtinFunctionsSourceCode);
 
-                extendedSymbolsSourceCode = @"namespace CoreWolf
+                extendedFunctionsSourceCode = @"namespace CoreWolf
 {
-    public static class ExtendedSymbols//CHAR_HERE
+    public static class ExtendedFunctions//CHAR_HERE
     {
 //SOURCE_CODE_HERE
     }
-}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", extendedSymbolsSourceCode);
-                File.WriteAllText(extendedSymbolsBaseFolder + "/ExtendedSymbols" + ch + ".cs", extendedSymbolsSourceCode);
+}".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", extendedFunctionsSourceCode);
+                File.WriteAllText(extendedFunctionsBaseFolder + "/ExtendedFunctions" + ch + ".cs", extendedFunctionsSourceCode);
             }
 
             System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -259,18 +259,18 @@ namespace CoreWolf.Scratcher
 
         public static void Main()
         {
-            if (!File.Exists(buildinSymbolsJsonFile))
+            if (!File.Exists(builtinSymbolsJsonFile))
                 CreateJsonFile();
 
-            if (Directory.Exists(buildinSymbolsBaseFolder))
-                Directory.Delete(buildinSymbolsBaseFolder, true);
-            if (Directory.Exists(extendedSymbolsBaseFolder))
-                Directory.Delete(extendedSymbolsBaseFolder, true);
+            if (Directory.Exists(builtinFunctionsBaseFolder))
+                Directory.Delete(builtinFunctionsBaseFolder, true);
+            if (Directory.Exists(extendedFunctionsBaseFolder))
+                Directory.Delete(extendedFunctionsBaseFolder, true);
 
-            Directory.CreateDirectory(buildinSymbolsBaseFolder);
-            Directory.CreateDirectory(extendedSymbolsBaseFolder);
+            Directory.CreateDirectory(builtinFunctionsBaseFolder);
+            Directory.CreateDirectory(extendedFunctionsBaseFolder);
 
-            CreateSymbols();
+            CreateBuiltinFunctions();
         }
     }
 }
