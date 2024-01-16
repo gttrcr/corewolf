@@ -2,6 +2,13 @@ using HtmlAgilityPack;
 using System.Net;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace CoreWolf.Scratcher
 {
@@ -18,14 +25,10 @@ namespace CoreWolf.Scratcher
 
             try
             {
-                HttpClient client = new HttpClient();
-                using (HttpResponseMessage response = client.GetAsync(url).Result)
-                {
-                    using (HttpContent content = response.Content)
-                    {
-                        return content.ReadAsStringAsync().Result;
-                    }
-                }
+                HttpClient client = new();
+                using HttpResponseMessage response = client.GetAsync(url).Result;
+                using HttpContent content = response.Content;
+                return content.ReadAsStringAsync().Result;
             }
             catch
             {
@@ -65,7 +68,7 @@ namespace CoreWolf.Scratcher
 
         private static List<string> GetArgsType(string signature, string name)
         {
-            Regex regex = new Regex(@"(?![^)(]*\([^)(]*?\)\)),(?![^\[]*\])(?![^\{]*\})(?![^\(]*\))");
+            Regex regex = new(@"(?![^)(]*\([^)(]*?\)\)),(?![^\[]*\])(?![^\{]*\})(?![^\(]*\))");
             string argsScope = signature.Replace(name, "");
             if (argsScope != "")
                 argsScope = argsScope.Substring(1, argsScope.Length - 1);
@@ -73,7 +76,7 @@ namespace CoreWolf.Scratcher
                 argsScope = argsScope.Substring(0, argsScope.Length - 1);
             List<string> splits = regex.Split(argsScope).ToList().Where(x => x != "").ToList();
 
-            List<string> argsType = new List<string>();
+            List<string> argsType = new();
             for (int s = 0; s < splits.Count; s++)
             {
                 if (splits[s].StartsWith('{') && splits[s].EndsWith('}'))
@@ -103,8 +106,8 @@ namespace CoreWolf.Scratcher
         {
             const string baseUrl = "https://reference.wolfram.com";
 
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = new HtmlDocument();
+            HtmlWeb web = new();
+            HtmlDocument doc = new();
             string? htmlMainPage = GetHTMLCode(baseUrl + "/language/guide/AlphabeticalListing");
             if (htmlMainPage == null)
                 return;
@@ -112,15 +115,17 @@ namespace CoreWolf.Scratcher
             doc.LoadHtml(htmlMainPage);
             List<HtmlNode> nodes = doc.DocumentNode.SelectNodes("//span[@class='IFSans']").ToList();
             int downloaded = 0;
-            List<Command> commands = new List<Command>();
+            List<Command> commands = new();
             Parallel.ForEach(nodes, node =>
             {
                 //get name
-                Command c = new Command();
-                c.Name = WebUtility.HtmlDecode(node.InnerText);
+                Command c = new()
+                {
+                    Name = WebUtility.HtmlDecode(node.InnerText)
+                };
 
                 //get url
-                HtmlDocument d = new HtmlDocument();
+                HtmlDocument d = new();
                 d.LoadHtml(node.InnerHtml);
                 c.Url = baseUrl + d.DocumentNode.SelectSingleNode("//a").Attributes["href"].Value;
 
@@ -184,7 +189,7 @@ namespace CoreWolf.Scratcher
 
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
-                List<string> extendedOverloadCheck = new List<string>();
+                List<string> extendedOverloadCheck = new();
                 string builtinFunctionsSourceCode = "";
                 string extendedFunctionsSourceCode = "";
                 List<Command> functionCommands = commands.Where(x => x.Name.StartsWith(ch) && x.Type == Type.Function).ToList();
@@ -228,7 +233,9 @@ namespace CoreWolf.Scratcher
                     }
                 }
 
-                builtinFunctionsSourceCode = @"namespace CoreWolf
+                builtinFunctionsSourceCode = @"using System.Collections.Generic;
+
+namespace CoreWolf
 {
     public static class BuiltinFunction//CHAR_HERE
     {
@@ -247,14 +254,7 @@ namespace CoreWolf.Scratcher
                 File.WriteAllText(extendedFunctionsBaseFolder + "/ExtendedFunctions" + ch + ".cs", extendedFunctionsSourceCode);
             }
 
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/C dotnet format";
-            process.StartInfo = startInfo;
-            process.Start();
-            process.WaitForExit();
+            GttrcrGist.Process.Run(null, "dotnet format");
         }
 
         public static void Main()
