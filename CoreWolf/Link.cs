@@ -78,7 +78,7 @@ namespace CoreWolf
             byte[] byteData = Encoding.ASCII.GetBytes(input);
             if (byteData.Length > WLServer.PacketSize)
                 throw new OverflowException("WLServer input string is larger than the maximum allowable package size of " + WLServer.PacketSize + " bytes");
-            if (mathKernel.Send(byteData) != byteData.Length)
+            if (mathKernel?.Send(byteData) != byteData.Length)
                 throw new Exception("The size of the sent message differs from the original size of the message");
             byte[] rec = new byte[WLServer.PacketSize];
             int length = mathKernel.Receive(rec);
@@ -91,75 +91,7 @@ namespace CoreWolf
 
         public void Dispose()
         {
-            mathKernel.Dispose();
+            mathKernel?.Dispose();
         }
-
-        #region DEPRECATED
-
-        /*
-        public List<string> RecursiveSimplify(string input)
-        {
-            string pattern = @"Abs\[([^\[\]A]+|(?<Level>\[)|(?<-Level>\]))+(?(Level)(?!))\]";
-            MatchCollection matchList = Regex.Matches(input, pattern);
-            List<string> list = matchList.Cast<Match>().Select(match => match.Value).Distinct().ToList();
-            List<string> binary = Enumerable.Range(0, (int)Math.Pow(2, list.Count)).Select(x => ToBinary(x, list.Count)).ToList();
-
-            List<string> output = Execute(ReplaceAbs(input, list, binary)).Select(x => x.Text).ToList();
-            for (int i = 0; i < output.Count; i++)
-            {
-                if (output[i].Contains("Abs["))
-                {
-                    string tmp = output[i];
-                    output.RemoveAt(i);
-                    output.AddRange(RecursiveSimplify(tmp));
-                    i = -1;
-                }
-            }
-
-            return output;
-        }
-
-        private List<string> ReplaceAbs(string input, List<string> abs, List<string> positive)
-        {
-            List<string> ret = new List<string>();
-            List<string> args = abs.Select(x => x.Substring(4, x.Length - 5)).ToList();
-            for (int i = 0; i < positive.Count; i++)
-            {
-                string retEl = input;
-                string pos = positive[i];
-                for (int p = 0; p < pos.Length; p++)
-                {
-                    string argsSign = "";
-                    if (pos[p] == '1')
-                        argsSign = args[p];
-                    else if (args[p][0] == 's')
-                        argsSign = "-" + string.Concat(args[p].Select(c => c == '-' ? '+' : c == '+' ? '-' : c));
-                    else
-                        argsSign = string.Concat(args[p].Select(c => c == '-' ? '+' : c == '+' ? '-' : c));
-
-                    retEl = retEl.Replace(abs[p], "(" + argsSign + ")");
-                }
-
-                ret.Add(retEl);
-            }
-
-            return ret;
-        }
-
-        private string ToBinary(int x, int size = 32)
-        {
-            char[] buff = new char[size];
-
-            for (int i = size - 1; i >= 0; i--)
-            {
-                int mask = 1 << i;
-                buff[size - 1 - i] = (x & mask) != 0 ? '1' : '0';
-            }
-
-            return new string(buff);
-        }
-        */
-
-        #endregion DEPRECATED
     }
 }

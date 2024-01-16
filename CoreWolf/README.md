@@ -12,9 +12,7 @@ CoreWolf is an open source c# library that allows you to fully interact with wol
 ## How to use CoreWolf?
 The code can be compiled by running the command
 ```
-sudo apt update -y
-sudo apt install python3 pip -y
-pip install wolframclient
+dotnet build
 ```
 and the **CoreWolf.dll** library will be produced.
 The library can be imported into your project and used. Here are some examples:
