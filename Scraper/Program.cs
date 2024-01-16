@@ -1,22 +1,15 @@
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 using System.Net;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Linq;
-using System.Threading.Tasks;
-using System;
-using System.IO;
-using System.Runtime.InteropServices;
 
-namespace CoreWolf.Scratcher
+namespace Scraper
 {
-    public static class Scratcher
+    public class Program
     {
         private static readonly string builtinSymbolsJsonFile = "BuiltinSymbols.json";
-        private static readonly string builtinFunctionsBaseFolder = "BuiltinFunctions";
-        private static readonly string extendedFunctionsBaseFolder = "ExtendedFunctions";
+        private static readonly string builtinFunctionsBaseFolder = "../CoreWolf/BuiltinFunctions";
+        private static readonly string extendedFunctionsBaseFolder = "../CoreWolf/ExtendedFunctions";
 
         private static string? GetHTMLCode(string url, int attempt = 10)
         {
@@ -43,19 +36,26 @@ namespace CoreWolf.Scratcher
             Other
         }
 
-        public struct Prototype
+        public class Prototype
         {
-            public string Signature;
-            public string Comment;
-            public List<string> ArgsType;
+            public string Signature { get; set; }
+            public string Comment { get; set; }
+            public List<string> ArgsType { get; set; }
+
+            public Prototype()
+            {
+                Signature = string.Empty;
+                Comment = string.Empty;
+                ArgsType = new();
+            }
         }
 
-        public struct Command
+        public class Command
         {
-            public string Name;
-            public string Url;
-            public List<Prototype> Prototypes;
-            public Type Type;
+            public string Name { get; set; }
+            public string Url { get; set; }
+            public List<Prototype> Prototypes { get; set; }
+            public Type Type { get; set; }
 
             public Command()
             {
@@ -116,7 +116,8 @@ namespace CoreWolf.Scratcher
             List<HtmlNode> nodes = doc.DocumentNode.SelectNodes("//span[@class='IFSans']").ToList();
             int downloaded = 0;
             List<Command> commands = new();
-            Parallel.ForEach(nodes, node =>
+            nodes = nodes.GetRange(0, 10);
+            Parallel.ForEach(nodes, new ParallelOptions() { MaxDegreeOfParallelism = 4 }, node =>
             {
                 //get name
                 Command c = new()
@@ -149,19 +150,17 @@ namespace CoreWolf.Scratcher
                 //get type
                 c.Type = GetCommandType(c.Prototypes[0].Signature, c.Name);
 
-                downloaded++;
-                Console.WriteLine((int)((double)downloaded * 100.0 / (double)nodes.Count));
-
+                Console.WriteLine(downloaded++ * 100.0 / nodes.Count);
                 commands.Add(c);
             });
 
             commands = commands.OrderBy(x => x.Name).ToList();
-            File.WriteAllText(builtinSymbolsJsonFile, JsonConvert.SerializeObject(commands));
+            File.WriteAllText(builtinSymbolsJsonFile, JsonSerializer.Serialize(commands));
         }
 
         private static void CreateBuiltinFunctions()
         {
-            List<Command>? commands = JsonConvert.DeserializeObject<List<Command>>(File.ReadAllText(builtinSymbolsJsonFile));
+            List<Command>? commands = JsonSerializer.Deserialize<List<Command>>(File.ReadAllText(builtinSymbolsJsonFile));
             if (commands == null)
                 return;
 
@@ -196,10 +195,13 @@ namespace CoreWolf.Scratcher
                 for (int i = 0; i < functionCommands.Count; i++)
                 {
                     Command c = functionCommands[i];
-                    List<Prototype> prototypes = c.Prototypes.GroupBy(x => string.Join("", x.ArgsType)).Select(x => x.FirstOrDefault()).ToList();
+                    List<Prototype?> prototypes = c.Prototypes.GroupBy(x => string.Join("", x.ArgsType)).Select(x => x.FirstOrDefault()).ToList();
                     for (int p = 0; p < prototypes.Count; p++)
                     {
-                        Prototype proto = prototypes[p];
+                        Prototype? proto = prototypes[p];
+                        if (proto == null)
+                            continue;
+
                         string argumentsObject = string.Join(", ", proto.ArgsType);
                         if (argumentsObject != "")
                             argumentsObject += ", ";
@@ -254,7 +256,7 @@ namespace CoreWolf
                 File.WriteAllText(extendedFunctionsBaseFolder + "/ExtendedFunctions" + ch + ".cs", extendedFunctionsSourceCode);
             }
 
-            GttrcrGist.Process.Run(null, "dotnet format");
+            GttrcrGist.Process.Run(null, "dotnet format ../CoreWolf");
         }
 
         public static void Main()
