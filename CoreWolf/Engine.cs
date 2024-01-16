@@ -17,7 +17,7 @@
 
         private void ValidName(ref string? name)
         {
-            Random random = new Random();
+            Random random = new();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             name ??= new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
             ValidNames?.Add(name);
@@ -35,6 +35,11 @@
             if (!DefinedFunctions.Contains(input))
                 DefinedFunctions.Add(input);
             Execute(input);
+        }
+
+        public override string ToString()
+        {
+            return Text;
         }
     }
 }

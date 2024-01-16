@@ -15,7 +15,6 @@ from wolframclient.language import wl, wlexpr
 client_number = 0
 first_incoming = False
 
-
 def on_new_client(clientsocket, addr):
     global client_number
     while True:
@@ -42,7 +41,6 @@ def on_new_client(clientsocket, addr):
             clientsocket.close()
             client_number -= 1
             break
-
 
 s = socket.socket()
 host = socket.gethostname()
