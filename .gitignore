@@ -1,3 +1,5 @@
 *bin*
 *obj*
-CoreWolf/wlserver.py
+*wlserver.py
+corewolf++/main
+*/.vscode/settings.json
