@@ -165,8 +165,8 @@ namespace Scraper
                 return;
 
             const string builtinFunctionStructure = @"//TAB_HERE///<summary>
-//TAB_HERE/////COMMENT_HERE
-//TAB_HERE/////URL_HERE
+//TAB_HERE/// //COMMENT_HERE
+//TAB_HERE/// //URL_HERE
 //TAB_HERE///</summary>
 //TAB_HEREpublic static Engine //NAME_HERE(this Engine en, //ARGUMENTS_OBJECT_HERE, string? name = null)
 //TAB_HERE{
@@ -176,8 +176,8 @@ namespace Scraper
 ";
 
             const string extendedFunctionStructure = @"//TAB_HERE///<summary>
-//TAB_HERE/////COMMENT_HERE
-//TAB_HERE/////URL_HERE
+//TAB_HERE/// //COMMENT_HERE
+//TAB_HERE/// //URL_HERE
 //TAB_HERE///</summary>
 //TAB_HEREpublic static Engine //NAME_HERE(this Engine en, string? name = null)
 //TAB_HERE{
@@ -186,6 +186,7 @@ namespace Scraper
 
 ";
 
+            string cppBuildinFunctionsSourceCode = "";
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
                 List<string> extendedOverloadCheck = new();
@@ -235,6 +236,15 @@ namespace Scraper
                     }
                 }
 
+                cppBuildinFunctionsSourceCode += builtinFunctionsSourceCode
+                .Replace("List<object> ", "const std::vector<std::string> &")
+                .Replace("object ", "const std::string &")
+                .Replace("public static Engine ", "corewolf::engine *")
+                .Replace("this Engine en, ", "")
+                .Replace("string? name = null", "const std::string &name = \"\"")
+                .Replace("\treturn en.Execute(", "return this->execute(")
+                .Replace("string.Join(',', ", "engine::_print_vector(");
+
                 builtinFunctionsSourceCode = @"using System.Collections.Generic;
 
 namespace CoreWolf
@@ -256,6 +266,7 @@ namespace CoreWolf
                 File.WriteAllText(extendedFunctionsBaseFolder + "/ExtendedFunctions" + ch + ".cs", extendedFunctionsSourceCode);
             }
 
+            File.WriteAllText("../corewolf++/engine.h", File.ReadAllText("../corewolf++/engine.h").Replace("// ##", cppBuildinFunctionsSourceCode));
             GttrcrGist.Process.Run(null, "dotnet format ../CoreWolf");
         }
 

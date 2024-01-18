@@ -5,8 +5,8 @@ namespace CoreWolf
     public static class BuiltinFunctionZ
     {
         ///<summary>
-        ///gives the radial Zernike polynomial .
-        ///https://reference.wolfram.com/language/ref/ZernikeR.html
+        /// gives the radial Zernike polynomial .
+        /// https://reference.wolfram.com/language/ref/ZernikeR.html
         ///</summary>
         public static Engine ZernikeR(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -14,8 +14,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the symmetry of a zero tensor in the slots si.
-        ///https://reference.wolfram.com/language/ref/ZeroSymmetric.html
+        /// represents the symmetry of a zero tensor in the slots si.
+        /// https://reference.wolfram.com/language/ref/ZeroSymmetric.html
         ///</summary>
         public static Engine ZeroSymmetric(this Engine en, List<object> arg0, string? name = null)
         {
@@ -23,8 +23,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Riemann zeta function .
-        ///https://reference.wolfram.com/language/ref/Zeta.html
+        /// gives the Riemann zeta function .
+        /// https://reference.wolfram.com/language/ref/Zeta.html
         ///</summary>
         public static Engine Zeta(this Engine en, object arg0, string? name = null)
         {
@@ -32,8 +32,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the generalized Riemann zeta function .
-        ///https://reference.wolfram.com/language/ref/Zeta.html
+        /// gives the generalized Riemann zeta function .
+        /// https://reference.wolfram.com/language/ref/Zeta.html
         ///</summary>
         public static Engine Zeta(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -41,8 +41,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the k zero of the Riemann zeta function on the critical line.
-        ///https://reference.wolfram.com/language/ref/ZetaZero.html
+        /// represents the k zero of the Riemann zeta function on the critical line.
+        /// https://reference.wolfram.com/language/ref/ZetaZero.html
         ///</summary>
         public static Engine ZetaZero(this Engine en, object arg0, string? name = null)
         {
@@ -50,8 +50,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the k zero with imaginary part greater than .
-        ///https://reference.wolfram.com/language/ref/ZetaZero.html
+        /// represents the k zero with imaginary part greater than .
+        /// https://reference.wolfram.com/language/ref/ZetaZero.html
         ///</summary>
         public static Engine ZetaZero(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -59,8 +59,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value of the specified property for the ZIP code entity.
-        ///https://reference.wolfram.com/language/ref/ZIPCodeData.html
+        /// gives the value of the specified property for the ZIP code entity.
+        /// https://reference.wolfram.com/language/ref/ZIPCodeData.html
         ///</summary>
         public static Engine ZIPCodeData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -68,8 +68,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of property values for the specified ZIP code entities.
-        ///https://reference.wolfram.com/language/ref/ZIPCodeData.html
+        /// gives a list of property values for the specified ZIP code entities.
+        /// https://reference.wolfram.com/language/ref/ZIPCodeData.html
         ///</summary>
         public static Engine ZIPCodeData(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -77,8 +77,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the specified annotation associated with the given property.
-        ///https://reference.wolfram.com/language/ref/ZIPCodeData.html
+        /// gives the specified annotation associated with the given property.
+        /// https://reference.wolfram.com/language/ref/ZIPCodeData.html
         ///</summary>
         public static Engine ZIPCodeData(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -86,8 +86,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a zeta distribution with parameter ρ.
-        ///https://reference.wolfram.com/language/ref/ZipfDistribution.html
+        /// represents a zeta distribution with parameter ρ.
+        /// https://reference.wolfram.com/language/ref/ZipfDistribution.html
         ///</summary>
         public static Engine ZipfDistribution(this Engine en, object arg0, string? name = null)
         {
@@ -95,8 +95,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Zipf distribution with range n.
-        ///https://reference.wolfram.com/language/ref/ZipfDistribution.html
+        /// represents a Zipf distribution with range n.
+        /// https://reference.wolfram.com/language/ref/ZipfDistribution.html
         ///</summary>
         public static Engine ZipfDistribution(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -104,8 +104,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests whether the mean of the data is zero.
-        ///https://reference.wolfram.com/language/ref/ZTest.html
+        /// tests whether the mean of the data is zero.
+        /// https://reference.wolfram.com/language/ref/ZTest.html
         ///</summary>
         public static Engine ZTest(this Engine en, object arg0, string? name = null)
         {
@@ -113,8 +113,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests whether the means of data1 and data2 are equal.
-        ///https://reference.wolfram.com/language/ref/ZTest.html
+        /// tests whether the means of data1 and data2 are equal.
+        /// https://reference.wolfram.com/language/ref/ZTest.html
         ///</summary>
         public static Engine ZTest(this Engine en, List<object> arg0, string? name = null)
         {
@@ -122,8 +122,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests for zero or equal means assuming a population variance σ2.
-        ///https://reference.wolfram.com/language/ref/ZTest.html
+        /// tests for zero or equal means assuming a population variance σ2.
+        /// https://reference.wolfram.com/language/ref/ZTest.html
         ///</summary>
         public static Engine ZTest(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -131,8 +131,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests the mean against μ0.
-        ///https://reference.wolfram.com/language/ref/ZTest.html
+        /// tests the mean against μ0.
+        /// https://reference.wolfram.com/language/ref/ZTest.html
         ///</summary>
         public static Engine ZTest(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -140,8 +140,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns the value of "property".
-        ///https://reference.wolfram.com/language/ref/ZTest.html
+        /// returns the value of "property".
+        /// https://reference.wolfram.com/language/ref/ZTest.html
         ///</summary>
         public static Engine ZTest(this Engine en, object arg0, object arg1, object arg2, object arg3, string? name = null)
         {
@@ -149,8 +149,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Z transform of expr.
-        ///https://reference.wolfram.com/language/ref/ZTransform.html
+        /// gives the Z transform of expr.
+        /// https://reference.wolfram.com/language/ref/ZTransform.html
         ///</summary>
         public static Engine ZTransform(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -158,8 +158,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the multidimensional Z transform of expr.
-        ///https://reference.wolfram.com/language/ref/ZTransform.html
+        /// gives the multidimensional Z transform of expr.
+        /// https://reference.wolfram.com/language/ref/ZTransform.html
         ///</summary>
         public static Engine ZTransform(this Engine en, object arg0, List<object> arg1, List<object> arg2, string? name = null)
         {

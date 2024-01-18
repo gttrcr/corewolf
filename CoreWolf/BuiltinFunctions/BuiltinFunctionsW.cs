@@ -5,8 +5,8 @@ namespace CoreWolf
     public static class BuiltinFunctionW
     {
         ///<summary>
-        ///waits for all concurrent evaluations represented by EvaluationObject expressions in expr to finish, then returns the resulting expression obtained.
-        ///https://reference.wolfram.com/language/ref/WaitAll.html
+        /// waits for all concurrent evaluations represented by EvaluationObject expressions in expr to finish, then returns the resulting expression obtained.
+        /// https://reference.wolfram.com/language/ref/WaitAll.html
         ///</summary>
         public static Engine WaitAll(this Engine en, object arg0, string? name = null)
         {
@@ -14,8 +14,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///waits until the first evaluation represented by any of the eidi finishes, then returns its result, the corresponding eidi, and the list of remaining eidk.
-        ///https://reference.wolfram.com/language/ref/WaitNext.html
+        /// waits until the first evaluation represented by any of the eidi finishes, then returns its result, the corresponding eidi, and the list of remaining eidk.
+        /// https://reference.wolfram.com/language/ref/WaitNext.html
         ///</summary>
         public static Engine WaitNext(this Engine en, List<object> arg0, string? name = null)
         {
@@ -23,8 +23,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///wraps the head h around the result before returning it.
-        ///https://reference.wolfram.com/language/ref/WaitNext.html
+        /// wraps the head h around the result before returning it.
+        /// https://reference.wolfram.com/language/ref/WaitNext.html
         ///</summary>
         public static Engine WaitNext(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -32,8 +32,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents Wakeby distribution with shape parameters β and δ, scale parameters α and γ, and location parameter μ.
-        ///https://reference.wolfram.com/language/ref/WakebyDistribution.html
+        /// represents Wakeby distribution with shape parameters β and δ, scale parameters α and γ, and location parameter μ.
+        /// https://reference.wolfram.com/language/ref/WakebyDistribution.html
         ///</summary>
         public static Engine WakebyDistribution(this Engine en, object arg0, object arg1, object arg2, object arg3, object arg4, string? name = null)
         {
@@ -41,8 +41,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Wallenius noncentral hypergeometric distribution.
-        ///https://reference.wolfram.com/language/ref/WalleniusHypergeometricDistribution.html
+        /// represents a Wallenius noncentral hypergeometric distribution.
+        /// https://reference.wolfram.com/language/ref/WalleniusHypergeometricDistribution.html
         ///</summary>
         public static Engine WalleniusHypergeometricDistribution(this Engine en, object arg0, object arg1, object arg2, object arg3, string? name = null)
         {
@@ -50,8 +50,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the Yule distribution with shape parameter α.
-        ///https://reference.wolfram.com/language/ref/WaringYuleDistribution.html
+        /// represents the Yule distribution with shape parameter α.
+        /// https://reference.wolfram.com/language/ref/WaringYuleDistribution.html
         ///</summary>
         public static Engine WaringYuleDistribution(this Engine en, object arg0, string? name = null)
         {
@@ -59,8 +59,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the Waring distribution with shape parameters α and β.
-        ///https://reference.wolfram.com/language/ref/WaringYuleDistribution.html
+        /// represents the Waring distribution with shape parameters α and β.
+        /// https://reference.wolfram.com/language/ref/WaringYuleDistribution.html
         ///</summary>
         public static Engine WaringYuleDistribution(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -68,8 +68,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the time warping (DTW) similarity path between sequences s1 and s2.
-        ///https://reference.wolfram.com/language/ref/WarpingCorrespondence.html
+        /// gives the time warping (DTW) similarity path between sequences s1 and s2.
+        /// https://reference.wolfram.com/language/ref/WarpingCorrespondence.html
         ///</summary>
         public static Engine WarpingCorrespondence(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -77,8 +77,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses a window specified by win for local search.
-        ///https://reference.wolfram.com/language/ref/WarpingCorrespondence.html
+        /// uses a window specified by win for local search.
+        /// https://reference.wolfram.com/language/ref/WarpingCorrespondence.html
         ///</summary>
         public static Engine WarpingCorrespondence(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -86,8 +86,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the dynamic time warping (DTW) distance between sequences s1 and s2.
-        ///https://reference.wolfram.com/language/ref/WarpingDistance.html
+        /// gives the dynamic time warping (DTW) distance between sequences s1 and s2.
+        /// https://reference.wolfram.com/language/ref/WarpingDistance.html
         ///</summary>
         public static Engine WarpingDistance(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -95,8 +95,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses a window specified by win for local search.
-        ///https://reference.wolfram.com/language/ref/WarpingDistance.html
+        /// uses a window specified by win for local search.
+        /// https://reference.wolfram.com/language/ref/WarpingDistance.html
         ///</summary>
         public static Engine WarpingDistance(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -104,8 +104,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///computes the watershed transform of image, returning the result as an array in which positive integers label the catchment basins.
-        ///https://reference.wolfram.com/language/ref/WatershedComponents.html
+        /// computes the watershed transform of image, returning the result as an array in which positive integers label the catchment basins.
+        /// https://reference.wolfram.com/language/ref/WatershedComponents.html
         ///</summary>
         public static Engine WatershedComponents(this Engine en, object arg0, string? name = null)
         {
@@ -113,8 +113,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses a binary image marker to indicate regions where basins may be created.
-        ///https://reference.wolfram.com/language/ref/WatershedComponents.html
+        /// uses a binary image marker to indicate regions where basins may be created.
+        /// https://reference.wolfram.com/language/ref/WatershedComponents.html
         ///</summary>
         public static Engine WatershedComponents(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -122,8 +122,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests whether data is normally distributed using the Watson  test.
-        ///https://reference.wolfram.com/language/ref/WatsonUSquareTest.html
+        /// tests whether data is normally distributed using the Watson  test.
+        /// https://reference.wolfram.com/language/ref/WatsonUSquareTest.html
         ///</summary>
         public static Engine WatsonUSquareTest(this Engine en, object arg0, string? name = null)
         {
@@ -131,8 +131,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests whether data is distributed according to dist using the Watson  test.
-        ///https://reference.wolfram.com/language/ref/WatsonUSquareTest.html
+        /// tests whether data is distributed according to dist using the Watson  test.
+        /// https://reference.wolfram.com/language/ref/WatsonUSquareTest.html
         ///</summary>
         public static Engine WatsonUSquareTest(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -140,8 +140,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns the value of "property".
-        ///https://reference.wolfram.com/language/ref/WatsonUSquareTest.html
+        /// returns the value of "property".
+        /// https://reference.wolfram.com/language/ref/WatsonUSquareTest.html
         ///</summary>
         public static Engine WatsonUSquareTest(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -149,8 +149,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the Watts–Strogatz graph distribution for n-vertex graphs with rewiring probability p.
-        ///https://reference.wolfram.com/language/ref/WattsStrogatzGraphDistribution.html
+        /// represents the Watts–Strogatz graph distribution for n-vertex graphs with rewiring probability p.
+        /// https://reference.wolfram.com/language/ref/WattsStrogatzGraphDistribution.html
         ///</summary>
         public static Engine WattsStrogatzGraphDistribution(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -158,8 +158,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents the Watts–Strogatz graph distribution for n-vertex graphs with rewiring probability p starting from a 2k-regular graph.
-        ///https://reference.wolfram.com/language/ref/WattsStrogatzGraphDistribution.html
+        /// represents the Watts–Strogatz graph distribution for n-vertex graphs with rewiring probability p starting from a 2k-regular graph.
+        /// https://reference.wolfram.com/language/ref/WattsStrogatzGraphDistribution.html
         ///</summary>
         public static Engine WattsStrogatzGraphDistribution(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -167,8 +167,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///computes a best basis representation in the DiscreteWaveletData object dwd.
-        ///https://reference.wolfram.com/language/ref/WaveletBestBasis.html
+        /// computes a best basis representation in the DiscreteWaveletData object dwd.
+        /// https://reference.wolfram.com/language/ref/WaveletBestBasis.html
         ///</summary>
         public static Engine WaveletBestBasis(this Engine en, object arg0, string? name = null)
         {
@@ -176,8 +176,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///computes a best basis representation using the cost specification cspec.
-        ///https://reference.wolfram.com/language/ref/WaveletBestBasis.html
+        /// computes a best basis representation using the cost specification cspec.
+        /// https://reference.wolfram.com/language/ref/WaveletBestBasis.html
         ///</summary>
         public static Engine WaveletBestBasis(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -185,8 +185,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the filter coefficients for the symbolic wavelet wave of type filt.
-        ///https://reference.wolfram.com/language/ref/WaveletFilterCoefficients.html
+        /// gives the filter coefficients for the symbolic wavelet wave of type filt.
+        /// https://reference.wolfram.com/language/ref/WaveletFilterCoefficients.html
         ///</summary>
         public static Engine WaveletFilterCoefficients(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -194,8 +194,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots the basis tree of wavelet image coefficients in the DiscreteWaveletData dwd.
-        ///https://reference.wolfram.com/language/ref/WaveletImagePlot.html
+        /// plots the basis tree of wavelet image coefficients in the DiscreteWaveletData dwd.
+        /// https://reference.wolfram.com/language/ref/WaveletImagePlot.html
         ///</summary>
         public static Engine WaveletImagePlot(this Engine en, object arg0, string? name = null)
         {
@@ -203,8 +203,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots coefficients up to refinement level r.
-        ///https://reference.wolfram.com/language/ref/WaveletImagePlot.html
+        /// plots coefficients up to refinement level r.
+        /// https://reference.wolfram.com/language/ref/WaveletImagePlot.html
         ///</summary>
         public static Engine WaveletImagePlot(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -212,8 +212,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///applies the image function ifunc to coefficients and wavelet indexes before plotting.
-        ///https://reference.wolfram.com/language/ref/WaveletImagePlot.html
+        /// applies the image function ifunc to coefficients and wavelet indexes before plotting.
+        /// https://reference.wolfram.com/language/ref/WaveletImagePlot.html
         ///</summary>
         public static Engine WaveletImagePlot(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -221,8 +221,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots wavelet transform coefficients in the DiscreteWaveletData dwd.
-        ///https://reference.wolfram.com/language/ref/WaveletListPlot.html
+        /// plots wavelet transform coefficients in the DiscreteWaveletData dwd.
+        /// https://reference.wolfram.com/language/ref/WaveletListPlot.html
         ///</summary>
         public static Engine WaveletListPlot(this Engine en, object arg0, string? name = null)
         {
@@ -230,8 +230,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots wavelet transform coefficients corresponding to the wavelet index specification wind.
-        ///https://reference.wolfram.com/language/ref/WaveletListPlot.html
+        /// plots wavelet transform coefficients corresponding to the wavelet index specification wind.
+        /// https://reference.wolfram.com/language/ref/WaveletListPlot.html
         ///</summary>
         public static Engine WaveletListPlot(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -239,8 +239,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///applies func to coefficients before plotting.
-        ///https://reference.wolfram.com/language/ref/WaveletListPlot.html
+        /// applies func to coefficients before plotting.
+        /// https://reference.wolfram.com/language/ref/WaveletListPlot.html
         ///</summary>
         public static Engine WaveletListPlot(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -248,8 +248,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots wavelet transform coefficients from several DiscreteWaveletData objects dwd1, dwd2, ….
-        ///https://reference.wolfram.com/language/ref/WaveletListPlot.html
+        /// plots wavelet transform coefficients from several DiscreteWaveletData objects dwd1, dwd2, ….
+        /// https://reference.wolfram.com/language/ref/WaveletListPlot.html
         ///</summary>
         public static Engine WaveletListPlot(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -257,8 +257,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///applies the function f to the arrays of coefficients and indices of a ContinuousWaveletData or DiscreteWaveletData object.
-        ///https://reference.wolfram.com/language/ref/WaveletMapIndexed.html
+        /// applies the function f to the arrays of coefficients and indices of a ContinuousWaveletData or DiscreteWaveletData object.
+        /// https://reference.wolfram.com/language/ref/WaveletMapIndexed.html
         ///</summary>
         public static Engine WaveletMapIndexed(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -266,8 +266,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///applies f to the DiscreteWaveletData coefficients specified by wind.
-        ///https://reference.wolfram.com/language/ref/WaveletMapIndexed.html
+        /// applies f to the DiscreteWaveletData coefficients specified by wind.
+        /// https://reference.wolfram.com/language/ref/WaveletMapIndexed.html
         ///</summary>
         public static Engine WaveletMapIndexed(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -275,8 +275,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots the basis tree of wavelet matrix coefficients in the DiscreteWaveletData dwd.
-        ///https://reference.wolfram.com/language/ref/WaveletMatrixPlot.html
+        /// plots the basis tree of wavelet matrix coefficients in the DiscreteWaveletData dwd.
+        /// https://reference.wolfram.com/language/ref/WaveletMatrixPlot.html
         ///</summary>
         public static Engine WaveletMatrixPlot(this Engine en, object arg0, string? name = null)
         {
@@ -284,8 +284,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots coefficients up to refinement level r.
-        ///https://reference.wolfram.com/language/ref/WaveletMatrixPlot.html
+        /// plots coefficients up to refinement level r.
+        /// https://reference.wolfram.com/language/ref/WaveletMatrixPlot.html
         ///</summary>
         public static Engine WaveletMatrixPlot(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -293,8 +293,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///applies func to coefficients before plotting.
-        ///https://reference.wolfram.com/language/ref/WaveletMatrixPlot.html
+        /// applies func to coefficients before plotting.
+        /// https://reference.wolfram.com/language/ref/WaveletMatrixPlot.html
         ///</summary>
         public static Engine WaveletMatrixPlot(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -302,8 +302,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the scaling function  for the symbolic wavelet wave evaluated at x.
-        ///https://reference.wolfram.com/language/ref/WaveletPhi.html
+        /// gives the scaling function  for the symbolic wavelet wave evaluated at x.
+        /// https://reference.wolfram.com/language/ref/WaveletPhi.html
         ///</summary>
         public static Engine WaveletPhi(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -311,8 +311,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the scaling function as a pure function.
-        ///https://reference.wolfram.com/language/ref/WaveletPhi.html
+        /// gives the scaling function as a pure function.
+        /// https://reference.wolfram.com/language/ref/WaveletPhi.html
         ///</summary>
         public static Engine WaveletPhi(this Engine en, object arg0, string? name = null)
         {
@@ -320,8 +320,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the wavelet function  for the symbolic wavelet wave evaluated at x.
-        ///https://reference.wolfram.com/language/ref/WaveletPsi.html
+        /// gives the wavelet function  for the symbolic wavelet wave evaluated at x.
+        /// https://reference.wolfram.com/language/ref/WaveletPsi.html
         ///</summary>
         public static Engine WaveletPsi(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -329,8 +329,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the wavelet function as a pure function.
-        ///https://reference.wolfram.com/language/ref/WaveletPsi.html
+        /// gives the wavelet function as a pure function.
+        /// https://reference.wolfram.com/language/ref/WaveletPsi.html
         ///</summary>
         public static Engine WaveletPsi(this Engine en, object arg0, string? name = null)
         {
@@ -338,8 +338,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots wavelet vector coefficients in a DiscreteWaveletData or ContinuousWaveletData object wd.
-        ///https://reference.wolfram.com/language/ref/WaveletScalogram.html
+        /// plots wavelet vector coefficients in a DiscreteWaveletData or ContinuousWaveletData object wd.
+        /// https://reference.wolfram.com/language/ref/WaveletScalogram.html
         ///</summary>
         public static Engine WaveletScalogram(this Engine en, object arg0, string? name = null)
         {
@@ -347,8 +347,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///plots wavelet coefficients corresponding to the wavelet index specification wind.
-        ///https://reference.wolfram.com/language/ref/WaveletScalogram.html
+        /// plots wavelet coefficients corresponding to the wavelet index specification wind.
+        /// https://reference.wolfram.com/language/ref/WaveletScalogram.html
         ///</summary>
         public static Engine WaveletScalogram(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -356,8 +356,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///applies func to coefficients before plotting.
-        ///https://reference.wolfram.com/language/ref/WaveletScalogram.html
+        /// applies func to coefficients before plotting.
+        /// https://reference.wolfram.com/language/ref/WaveletScalogram.html
         ///</summary>
         public static Engine WaveletScalogram(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -365,8 +365,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///thresholds the detail wavelet coefficients in the DiscreteWaveletData object dwd.
-        ///https://reference.wolfram.com/language/ref/WaveletThreshold.html
+        /// thresholds the detail wavelet coefficients in the DiscreteWaveletData object dwd.
+        /// https://reference.wolfram.com/language/ref/WaveletThreshold.html
         ///</summary>
         public static Engine WaveletThreshold(this Engine en, object arg0, string? name = null)
         {
@@ -374,8 +374,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///thresholds the coefficients using the thresholding specification tspec.
-        ///https://reference.wolfram.com/language/ref/WaveletThreshold.html
+        /// thresholds the coefficients using the thresholding specification tspec.
+        /// https://reference.wolfram.com/language/ref/WaveletThreshold.html
         ///</summary>
         public static Engine WaveletThreshold(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -383,8 +383,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///thresholds the wavelet coefficients given by the wavelet indices wind.
-        ///https://reference.wolfram.com/language/ref/WaveletThreshold.html
+        /// thresholds the wavelet coefficients given by the wavelet indices wind.
+        /// https://reference.wolfram.com/language/ref/WaveletThreshold.html
         ///</summary>
         public static Engine WaveletThreshold(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -392,8 +392,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///yields a wave equation PDE term  with model variables vars and model parameters pars.
-        ///https://reference.wolfram.com/language/ref/WavePDEComponent.html
+        /// yields a wave equation PDE term  with model variables vars and model parameters pars.
+        /// https://reference.wolfram.com/language/ref/WavePDEComponent.html
         ///</summary>
         public static Engine WavePDEComponent(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -401,8 +401,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the weakly connected components of the graph g.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
+        /// gives the weakly connected components of the graph g.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
         ///</summary>
         public static Engine WeaklyConnectedComponents(this Engine en, object arg0, string? name = null)
         {
@@ -410,8 +410,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the weakly connected components that include at least one of the vertices v1, v2, ….
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
+        /// gives the weakly connected components that include at least one of the vertices v1, v2, ….
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
         ///</summary>
         public static Engine WeaklyConnectedComponents(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -419,8 +419,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the connected components that include a vertex that matches the pattern patt.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
+        /// gives the connected components that include a vertex that matches the pattern patt.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
         ///</summary>
         public static Engine WeaklyConnectedComponents(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -428,8 +428,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses rules vw to specify the graph g.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
+        /// uses rules vw to specify the graph g.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedComponents.html
         ///</summary>
         public static Engine WeaklyConnectedComponents(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -437,8 +437,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the weakly connected components of the graph g.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
+        /// gives the weakly connected components of the graph g.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
         ///</summary>
         public static Engine WeaklyConnectedGraphComponents(this Engine en, object arg0, string? name = null)
         {
@@ -446,8 +446,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the weakly connected components that include at least one of the vertices v1, v2, … .
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
+        /// gives the weakly connected components that include at least one of the vertices v1, v2, … .
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
         ///</summary>
         public static Engine WeaklyConnectedGraphComponents(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -455,8 +455,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the connected components that include a vertex that matches the pattern patt.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
+        /// gives the connected components that include a vertex that matches the pattern patt.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
         ///</summary>
         public static Engine WeaklyConnectedGraphComponents(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -464,8 +464,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses rules vw to specify the graph g.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
+        /// uses rules vw to specify the graph g.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedGraphComponents.html
         ///</summary>
         public static Engine WeaklyConnectedGraphComponents(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -473,8 +473,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///yields True if the graph g is weakly connected, and False otherwise.
-        ///https://reference.wolfram.com/language/ref/WeaklyConnectedGraphQ.html
+        /// yields True if the graph g is weakly connected, and False otherwise.
+        /// https://reference.wolfram.com/language/ref/WeaklyConnectedGraphQ.html
         ///</summary>
         public static Engine WeaklyConnectedGraphQ(this Engine en, object arg0, string? name = null)
         {
@@ -482,8 +482,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives conditions for the process proc to be weakly stationary.
-        ///https://reference.wolfram.com/language/ref/WeakStationarity.html
+        /// gives conditions for the process proc to be weakly stationary.
+        /// https://reference.wolfram.com/language/ref/WeakStationarity.html
         ///</summary>
         public static Engine WeakStationarity(this Engine en, object arg0, string? name = null)
         {
@@ -491,8 +491,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the most recent measurement for the specified weather property at the location corresponding to loc.
-        ///https://reference.wolfram.com/language/ref/WeatherData.html
+        /// gives the most recent measurement for the specified weather property at the location corresponding to loc.
+        /// https://reference.wolfram.com/language/ref/WeatherData.html
         ///</summary>
         public static Engine WeatherData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -500,8 +500,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives all measurements during the specified date.
-        ///https://reference.wolfram.com/language/ref/WeatherData.html
+        /// gives all measurements during the specified date.
+        /// https://reference.wolfram.com/language/ref/WeatherData.html
         ///</summary>
         public static Engine WeatherData(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -509,8 +509,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of dates and measurements for the time interval start to end.
-        ///https://reference.wolfram.com/language/ref/WeatherData.html
+        /// gives a list of dates and measurements for the time interval start to end.
+        /// https://reference.wolfram.com/language/ref/WeatherData.html
         ///</summary>
         public static Engine WeatherData(this Engine en, object arg0, object arg1, List<object> arg2, string? name = null)
         {
@@ -518,8 +518,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the most recent forecast for all weather forecast properties for the specified location.
-        ///https://reference.wolfram.com/language/ref/WeatherForecastData.html
+        /// gives the most recent forecast for all weather forecast properties for the specified location.
+        /// https://reference.wolfram.com/language/ref/WeatherForecastData.html
         ///</summary>
         public static Engine WeatherForecastData(this Engine en, object arg0, string? name = null)
         {
@@ -527,8 +527,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the forecast for the property at the specified location.
-        ///https://reference.wolfram.com/language/ref/WeatherForecastData.html
+        /// gives the forecast for the property at the specified location.
+        /// https://reference.wolfram.com/language/ref/WeatherForecastData.html
         ///</summary>
         public static Engine WeatherForecastData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -536,8 +536,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the forecast at the time or times specified by datespec for the property at the location.
-        ///https://reference.wolfram.com/language/ref/WeatherForecastData.html
+        /// gives the forecast at the time or times specified by datespec for the property at the location.
+        /// https://reference.wolfram.com/language/ref/WeatherForecastData.html
         ///</summary>
         public static Engine WeatherForecastData(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -545,8 +545,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a dataset of the top web audio search results for the specified literal string.
-        ///https://reference.wolfram.com/language/ref/WebAudioSearch.html
+        /// gives a dataset of the top web audio search results for the specified literal string.
+        /// https://reference.wolfram.com/language/ref/WebAudioSearch.html
         ///</summary>
         public static Engine WebAudioSearch(this Engine en, object arg0, string? name = null)
         {
@@ -554,8 +554,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the elements of the web audio search specified by format.
-        ///https://reference.wolfram.com/language/ref/WebAudioSearch.html
+        /// gives the elements of the web audio search specified by format.
+        /// https://reference.wolfram.com/language/ref/WebAudioSearch.html
         ///</summary>
         public static Engine WebAudioSearch(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -563,8 +563,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns only audio results that satisfy crit.
-        ///https://reference.wolfram.com/language/ref/WebAudioSearch.html
+        /// returns only audio results that satisfy crit.
+        /// https://reference.wolfram.com/language/ref/WebAudioSearch.html
         ///</summary>
         public static Engine WebAudioSearch(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -572,8 +572,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents an HTML column containing the expri.
-        ///https://reference.wolfram.com/language/ref/WebColumn.html
+        /// represents an HTML column containing the expri.
+        /// https://reference.wolfram.com/language/ref/WebColumn.html
         ///</summary>
         public static Engine WebColumn(this Engine en, List<object> arg0, string? name = null)
         {
@@ -581,8 +581,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///displays with expr formatted using the specified option settings.
-        ///https://reference.wolfram.com/language/ref/WebColumn.html
+        /// displays with expr formatted using the specified option settings.
+        /// https://reference.wolfram.com/language/ref/WebColumn.html
         ///</summary>
         public static Engine WebColumn(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -590,8 +590,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents an element of an open webpage operated on by WebExecute.
-        ///https://reference.wolfram.com/language/ref/WebElementObject.html
+        /// represents an element of an open webpage operated on by WebExecute.
+        /// https://reference.wolfram.com/language/ref/WebElementObject.html
         ///</summary>
         public static Engine WebElementObject(this Engine en, object arg0, string? name = null)
         {
@@ -599,8 +599,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Weber function .
-        ///https://reference.wolfram.com/language/ref/WeberE.html
+        /// gives the Weber function .
+        /// https://reference.wolfram.com/language/ref/WeberE.html
         ///</summary>
         public static Engine WeberE(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -608,8 +608,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the associated Weber function .
-        ///https://reference.wolfram.com/language/ref/WeberE.html
+        /// gives the associated Weber function .
+        /// https://reference.wolfram.com/language/ref/WeberE.html
         ///</summary>
         public static Engine WeberE(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -617,8 +617,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///executes the command cmd in a web browser.
-        ///https://reference.wolfram.com/language/ref/WebExecute.html
+        /// executes the command cmd in a web browser.
+        /// https://reference.wolfram.com/language/ref/WebExecute.html
         ///</summary>
         public static Engine WebExecute(this Engine en, object arg0, string? name = null)
         {
@@ -626,8 +626,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///executes a list of commands in sequence.
-        ///https://reference.wolfram.com/language/ref/WebExecute.html
+        /// executes a list of commands in sequence.
+        /// https://reference.wolfram.com/language/ref/WebExecute.html
         ///</summary>
         public static Engine WebExecute(this Engine en, List<object> arg0, string? name = null)
         {
@@ -635,8 +635,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///executes cmds in the specified web session.
-        ///https://reference.wolfram.com/language/ref/WebExecute.html
+        /// executes cmds in the specified web session.
+        /// https://reference.wolfram.com/language/ref/WebExecute.html
         ///</summary>
         public static Engine WebExecute(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -644,8 +644,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives an image of the webpage specified by url.
-        ///https://reference.wolfram.com/language/ref/WebImage.html
+        /// gives an image of the webpage specified by url.
+        /// https://reference.wolfram.com/language/ref/WebImage.html
         ///</summary>
         public static Engine WebImage(this Engine en, object arg0, string? name = null)
         {
@@ -653,8 +653,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of thumbnails of the top web image search results for the specified literal string.
-        ///https://reference.wolfram.com/language/ref/WebImageSearch.html
+        /// gives a list of thumbnails of the top web image search results for the specified literal string.
+        /// https://reference.wolfram.com/language/ref/WebImageSearch.html
         ///</summary>
         public static Engine WebImageSearch(this Engine en, object arg0, string? name = null)
         {
@@ -662,8 +662,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///picks out the first n top results obtained by doing the web image search specified by form.
-        ///https://reference.wolfram.com/language/ref/WebImageSearch.html
+        /// picks out the first n top results obtained by doing the web image search specified by form.
+        /// https://reference.wolfram.com/language/ref/WebImageSearch.html
         ///</summary>
         public static Engine WebImageSearch(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -671,8 +671,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///picks out the first n elements of the web image search specified by elems.
-        ///https://reference.wolfram.com/language/ref/WebImageSearch.html
+        /// picks out the first n elements of the web image search specified by elems.
+        /// https://reference.wolfram.com/language/ref/WebImageSearch.html
         ///</summary>
         public static Engine WebImageSearch(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -680,8 +680,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents an HTML element containing expr.
-        ///https://reference.wolfram.com/language/ref/WebItem.html
+        /// represents an HTML element containing expr.
+        /// https://reference.wolfram.com/language/ref/WebItem.html
         ///</summary>
         public static Engine WebItem(this Engine en, object arg0, string? name = null)
         {
@@ -689,8 +689,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents an HTML element formatted using the specified option settings.
-        ///https://reference.wolfram.com/language/ref/WebItem.html
+        /// represents an HTML element formatted using the specified option settings.
+        /// https://reference.wolfram.com/language/ref/WebItem.html
         ///</summary>
         public static Engine WebItem(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -698,8 +698,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents an HTML column containing the expri.
-        ///https://reference.wolfram.com/language/ref/WebRow.html
+        /// represents an HTML column containing the expri.
+        /// https://reference.wolfram.com/language/ref/WebRow.html
         ///</summary>
         public static Engine WebRow(this Engine en, List<object> arg0, string? name = null)
         {
@@ -707,8 +707,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///displays with expr formatted using the specified option settings.
-        ///https://reference.wolfram.com/language/ref/WebRow.html
+        /// displays with expr formatted using the specified option settings.
+        /// https://reference.wolfram.com/language/ref/WebRow.html
         ///</summary>
         public static Engine WebRow(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -716,8 +716,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a dataset of the top web search results for the specified literal string.
-        ///https://reference.wolfram.com/language/ref/WebSearch.html
+        /// gives a dataset of the top web search results for the specified literal string.
+        /// https://reference.wolfram.com/language/ref/WebSearch.html
         ///</summary>
         public static Engine WebSearch(this Engine en, object arg0, string? name = null)
         {
@@ -725,8 +725,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the elements of the web search specified by elems.
-        ///https://reference.wolfram.com/language/ref/WebSearch.html
+        /// gives the elements of the web search specified by elems.
+        /// https://reference.wolfram.com/language/ref/WebSearch.html
         ///</summary>
         public static Engine WebSearch(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -734,8 +734,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a web browser session started by StartWebSession for use with WebExecute.
-        ///https://reference.wolfram.com/language/ref/WebSessionObject.html
+        /// represents a web browser session started by StartWebSession for use with WebExecute.
+        /// https://reference.wolfram.com/language/ref/WebSessionObject.html
         ///</summary>
         public static Engine WebSessionObject(this Engine en, object arg0, string? name = null)
         {
@@ -743,8 +743,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the list of all active web sessions.
-        ///https://reference.wolfram.com/language/ref/WebSessions.html
+        /// gives the list of all active web sessions.
+        /// https://reference.wolfram.com/language/ref/WebSessions.html
         ///</summary>
         public static Engine WebSessions(this Engine en, string? name = null)
         {
@@ -752,8 +752,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents an open window or tab in a web browser.
-        ///https://reference.wolfram.com/language/ref/WebWindowObject.html
+        /// represents an open window or tab in a web browser.
+        /// https://reference.wolfram.com/language/ref/WebWindowObject.html
         ///</summary>
         public static Engine WebWindowObject(this Engine en, object arg0, string? name = null)
         {
@@ -761,8 +761,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///displays as x⋀y⋀….
-        ///https://reference.wolfram.com/language/ref/Wedge.html
+        /// displays as x⋀y⋀….
+        /// https://reference.wolfram.com/language/ref/Wedge.html
         ///</summary>
         public static Engine Wedge(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -770,8 +770,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Weibull distribution with shape parameter α and scale parameter β.
-        ///https://reference.wolfram.com/language/ref/WeibullDistribution.html
+        /// represents a Weibull distribution with shape parameter α and scale parameter β.
+        /// https://reference.wolfram.com/language/ref/WeibullDistribution.html
         ///</summary>
         public static Engine WeibullDistribution(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -779,8 +779,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Weibull distribution with shape parameter α, scale parameter β, and location parameter μ.
-        ///https://reference.wolfram.com/language/ref/WeibullDistribution.html
+        /// represents a Weibull distribution with shape parameter α, scale parameter β, and location parameter μ.
+        /// https://reference.wolfram.com/language/ref/WeibullDistribution.html
         ///</summary>
         public static Engine WeibullDistribution(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -788,8 +788,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value e1 of the Weierstrass elliptic function  at the half-period .
-        ///https://reference.wolfram.com/language/ref/WeierstrassE1.html
+        /// gives the value e1 of the Weierstrass elliptic function  at the half-period .
+        /// https://reference.wolfram.com/language/ref/WeierstrassE1.html
         ///</summary>
         public static Engine WeierstrassE1(this Engine en, List<object> arg0, string? name = null)
         {
@@ -797,8 +797,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value e2 of the Weierstrass elliptic function  at the half-period .
-        ///https://reference.wolfram.com/language/ref/WeierstrassE2.html
+        /// gives the value e2 of the Weierstrass elliptic function  at the half-period .
+        /// https://reference.wolfram.com/language/ref/WeierstrassE2.html
         ///</summary>
         public static Engine WeierstrassE2(this Engine en, List<object> arg0, string? name = null)
         {
@@ -806,8 +806,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value e3 of the Weierstrass elliptic function  at the half-period .
-        ///https://reference.wolfram.com/language/ref/WeierstrassE3.html
+        /// gives the value e3 of the Weierstrass elliptic function  at the half-period .
+        /// https://reference.wolfram.com/language/ref/WeierstrassE3.html
         ///</summary>
         public static Engine WeierstrassE3(this Engine en, List<object> arg0, string? name = null)
         {
@@ -815,8 +815,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value η1 of the Weierstrass zeta function ζ at the half-period .
-        ///https://reference.wolfram.com/language/ref/WeierstrassEta1.html
+        /// gives the value η1 of the Weierstrass zeta function ζ at the half-period .
+        /// https://reference.wolfram.com/language/ref/WeierstrassEta1.html
         ///</summary>
         public static Engine WeierstrassEta1(this Engine en, List<object> arg0, string? name = null)
         {
@@ -824,8 +824,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value η2 of the Weierstrass zeta function ζ at the half-period .
-        ///https://reference.wolfram.com/language/ref/WeierstrassEta2.html
+        /// gives the value η2 of the Weierstrass zeta function ζ at the half-period .
+        /// https://reference.wolfram.com/language/ref/WeierstrassEta2.html
         ///</summary>
         public static Engine WeierstrassEta2(this Engine en, List<object> arg0, string? name = null)
         {
@@ -833,8 +833,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value η3 of the Weierstrass zeta function ζ at the half-period .
-        ///https://reference.wolfram.com/language/ref/WeierstrassEta3.html
+        /// gives the value η3 of the Weierstrass zeta function ζ at the half-period .
+        /// https://reference.wolfram.com/language/ref/WeierstrassEta3.html
         ///</summary>
         public static Engine WeierstrassEta3(this Engine en, List<object> arg0, string? name = null)
         {
@@ -842,8 +842,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the half‐periods {ω1,ω3} for Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassHalfPeriods.html
+        /// gives the half‐periods {ω1,ω3} for Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassHalfPeriods.html
         ///</summary>
         public static Engine WeierstrassHalfPeriods(this Engine en, List<object> arg0, string? name = null)
         {
@@ -851,8 +851,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the half-period ω1 for Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassHalfPeriodW1.html
+        /// gives the half-period ω1 for Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassHalfPeriodW1.html
         ///</summary>
         public static Engine WeierstrassHalfPeriodW1(this Engine en, List<object> arg0, string? name = null)
         {
@@ -860,8 +860,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the half-period ω2 for the Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassHalfPeriodW2.html
+        /// gives the half-period ω2 for the Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassHalfPeriodW2.html
         ///</summary>
         public static Engine WeierstrassHalfPeriodW2(this Engine en, List<object> arg0, string? name = null)
         {
@@ -869,8 +869,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the half-period ω3 for the Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassHalfPeriodW3.html
+        /// gives the half-period ω3 for the Weierstrass elliptic functions corresponding to the invariants {g2,g3}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassHalfPeriodW3.html
         ///</summary>
         public static Engine WeierstrassHalfPeriodW3(this Engine en, List<object> arg0, string? name = null)
         {
@@ -878,8 +878,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the invariant  for the Weierstrass elliptic functions corresponding to the half‐periods {ω,ω′}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassInvariantG2.html
+        /// gives the invariant  for the Weierstrass elliptic functions corresponding to the half‐periods {ω,ω′}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassInvariantG2.html
         ///</summary>
         public static Engine WeierstrassInvariantG2(this Engine en, List<object> arg0, string? name = null)
         {
@@ -887,8 +887,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the invariant  for the Weierstrass elliptic functions corresponding to the half‐periods {ω,ω′}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassInvariantG3.html
+        /// gives the invariant  for the Weierstrass elliptic functions corresponding to the half‐periods {ω,ω′}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassInvariantG3.html
         ///</summary>
         public static Engine WeierstrassInvariantG3(this Engine en, List<object> arg0, string? name = null)
         {
@@ -896,8 +896,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the invariants {g2,g3} for Weierstrass elliptic functions corresponding to the half‐periods {ω1,ω3}.
-        ///https://reference.wolfram.com/language/ref/WeierstrassInvariants.html
+        /// gives the invariants {g2,g3} for Weierstrass elliptic functions corresponding to the half‐periods {ω1,ω3}.
+        /// https://reference.wolfram.com/language/ref/WeierstrassInvariants.html
         ///</summary>
         public static Engine WeierstrassInvariants(this Engine en, List<object> arg0, string? name = null)
         {
@@ -905,8 +905,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Weierstrass elliptic function .
-        ///https://reference.wolfram.com/language/ref/WeierstrassP.html
+        /// gives the Weierstrass elliptic function .
+        /// https://reference.wolfram.com/language/ref/WeierstrassP.html
         ///</summary>
         public static Engine WeierstrassP(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -914,8 +914,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the derivative of the Weierstrass elliptic function .
-        ///https://reference.wolfram.com/language/ref/WeierstrassPPrime.html
+        /// gives the derivative of the Weierstrass elliptic function .
+        /// https://reference.wolfram.com/language/ref/WeierstrassPPrime.html
         ///</summary>
         public static Engine WeierstrassPPrime(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -923,8 +923,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Weierstrass sigma function .
-        ///https://reference.wolfram.com/language/ref/WeierstrassSigma.html
+        /// gives the Weierstrass sigma function .
+        /// https://reference.wolfram.com/language/ref/WeierstrassSigma.html
         ///</summary>
         public static Engine WeierstrassSigma(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -932,8 +932,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Weierstrass zeta function .
-        ///https://reference.wolfram.com/language/ref/WeierstrassZeta.html
+        /// gives the Weierstrass zeta function .
+        /// https://reference.wolfram.com/language/ref/WeierstrassZeta.html
         ///</summary>
         public static Engine WeierstrassZeta(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -941,8 +941,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the graph with weighted adjacency matrix wmat.
-        ///https://reference.wolfram.com/language/ref/WeightedAdjacencyGraph.html
+        /// gives the graph with weighted adjacency matrix wmat.
+        /// https://reference.wolfram.com/language/ref/WeightedAdjacencyGraph.html
         ///</summary>
         public static Engine WeightedAdjacencyGraph(this Engine en, object arg0, string? name = null)
         {
@@ -950,8 +950,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the graph with vertices vi and weighted adjacency matrix wmat.
-        ///https://reference.wolfram.com/language/ref/WeightedAdjacencyGraph.html
+        /// gives the graph with vertices vi and weighted adjacency matrix wmat.
+        /// https://reference.wolfram.com/language/ref/WeightedAdjacencyGraph.html
         ///</summary>
         public static Engine WeightedAdjacencyGraph(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -959,8 +959,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the adjacency matrix of edge weights of the graph g.
-        ///https://reference.wolfram.com/language/ref/WeightedAdjacencyMatrix.html
+        /// gives the adjacency matrix of edge weights of the graph g.
+        /// https://reference.wolfram.com/language/ref/WeightedAdjacencyMatrix.html
         ///</summary>
         public static Engine WeightedAdjacencyMatrix(this Engine en, object arg0, string? name = null)
         {
@@ -968,8 +968,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses rules vw to specify the graph g.
-        ///https://reference.wolfram.com/language/ref/WeightedAdjacencyMatrix.html
+        /// uses rules vw to specify the graph g.
+        /// https://reference.wolfram.com/language/ref/WeightedAdjacencyMatrix.html
         ///</summary>
         public static Engine WeightedAdjacencyMatrix(this Engine en, List<object> arg0, string? name = null)
         {
@@ -977,8 +977,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents observations xi with weights wi.
-        ///https://reference.wolfram.com/language/ref/WeightedData.html
+        /// represents observations xi with weights wi.
+        /// https://reference.wolfram.com/language/ref/WeightedData.html
         ///</summary>
         public static Engine WeightedData(this Engine en, List<object> arg0, List<object> arg1, string? name = null)
         {
@@ -986,8 +986,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents observations xi with weighting function fn.
-        ///https://reference.wolfram.com/language/ref/WeightedData.html
+        /// represents observations xi with weighting function fn.
+        /// https://reference.wolfram.com/language/ref/WeightedData.html
         ///</summary>
         public static Engine WeightedData(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -995,8 +995,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///yields True if the graph g is a weighted graph and False otherwise.
-        ///https://reference.wolfram.com/language/ref/WeightedGraphQ.html
+        /// yields True if the graph g is a weighted graph and False otherwise.
+        /// https://reference.wolfram.com/language/ref/WeightedGraphQ.html
         ///</summary>
         public static Engine WeightedGraphQ(this Engine en, object arg0, string? name = null)
         {
@@ -1004,8 +1004,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Welch window function of x.
-        ///https://reference.wolfram.com/language/ref/WelchWindow.html
+        /// represents a Welch window function of x.
+        /// https://reference.wolfram.com/language/ref/WelchWindow.html
         ///</summary>
         public static Engine WelchWindow(this Engine en, object arg0, string? name = null)
         {
@@ -1013,8 +1013,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses the parameter α.
-        ///https://reference.wolfram.com/language/ref/WelchWindow.html
+        /// uses the parameter α.
+        /// https://reference.wolfram.com/language/ref/WelchWindow.html
         ///</summary>
         public static Engine WelchWindow(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1022,8 +1022,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the wheel graph with n vertices .
-        ///https://reference.wolfram.com/language/ref/WheelGraph.html
+        /// gives the wheel graph with n vertices .
+        /// https://reference.wolfram.com/language/ref/WheelGraph.html
         ///</summary>
         public static Engine WheelGraph(this Engine en, object arg0, string? name = null)
         {
@@ -1031,8 +1031,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///specifies an action that occurs when the event triggers it for equations in NDSolve and related functions.
-        ///https://reference.wolfram.com/language/ref/WhenEvent.html
+        /// specifies an action that occurs when the event triggers it for equations in NDSolve and related functions.
+        /// https://reference.wolfram.com/language/ref/WhenEvent.html
         ///</summary>
         public static Engine WhenEvent(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1040,8 +1040,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///evaluates each of the testi in turn, returning the value of the valuei corresponding to the first one that yields True.
-        ///https://reference.wolfram.com/language/ref/Which.html
+        /// evaluates each of the testi in turn, returning the value of the valuei corresponding to the first one that yields True.
+        /// https://reference.wolfram.com/language/ref/Which.html
         ///</summary>
         public static Engine Which(this Engine en, object arg0, object arg1, object arg2, object arg3, object arg4, string? name = null)
         {
@@ -1049,8 +1049,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///evaluates test, then body, repetitively, until test first fails to give True.
-        ///https://reference.wolfram.com/language/ref/While.html
+        /// evaluates test, then body, repetitively, until test first fails to give True.
+        /// https://reference.wolfram.com/language/ref/While.html
         ///</summary>
         public static Engine While(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1058,8 +1058,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Gaussian white noise process with mean 0 and standard deviation 1.
-        ///https://reference.wolfram.com/language/ref/WhiteNoiseProcess.html
+        /// represents a Gaussian white noise process with mean 0 and standard deviation 1.
+        /// https://reference.wolfram.com/language/ref/WhiteNoiseProcess.html
         ///</summary>
         public static Engine WhiteNoiseProcess(this Engine en, string? name = null)
         {
@@ -1067,8 +1067,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Gaussian white noise process with mean 0 and standard deviation σ.
-        ///https://reference.wolfram.com/language/ref/WhiteNoiseProcess.html
+        /// represents a Gaussian white noise process with mean 0 and standard deviation σ.
+        /// https://reference.wolfram.com/language/ref/WhiteNoiseProcess.html
         ///</summary>
         public static Engine WhiteNoiseProcess(this Engine en, object arg0, string? name = null)
         {
@@ -1076,8 +1076,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Whittaker function .
-        ///https://reference.wolfram.com/language/ref/WhittakerM.html
+        /// gives the Whittaker function .
+        /// https://reference.wolfram.com/language/ref/WhittakerM.html
         ///</summary>
         public static Engine WhittakerM(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1085,8 +1085,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Whittaker function .
-        ///https://reference.wolfram.com/language/ref/WhittakerW.html
+        /// gives the Whittaker function .
+        /// https://reference.wolfram.com/language/ref/WhittakerW.html
         ///</summary>
         public static Engine WhittakerW(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1094,8 +1094,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///removes noise from data by applying a range-r Wiener filter.
-        ///https://reference.wolfram.com/language/ref/WienerFilter.html
+        /// removes noise from data by applying a range-r Wiener filter.
+        /// https://reference.wolfram.com/language/ref/WienerFilter.html
         ///</summary>
         public static Engine WienerFilter(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1103,8 +1103,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///assumes an additive noise power value ns.
-        ///https://reference.wolfram.com/language/ref/WienerFilter.html
+        /// assumes an additive noise power value ns.
+        /// https://reference.wolfram.com/language/ref/WienerFilter.html
         ///</summary>
         public static Engine WienerFilter(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1112,8 +1112,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses radius ri at level i in data.
-        ///https://reference.wolfram.com/language/ref/WienerFilter.html
+        /// uses radius ri at level i in data.
+        /// https://reference.wolfram.com/language/ref/WienerFilter.html
         ///</summary>
         public static Engine WienerFilter(this Engine en, object arg0, List<object> arg1, object arg2, string? name = null)
         {
@@ -1121,8 +1121,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Wiener process with a drift μ and volatility σ.
-        ///https://reference.wolfram.com/language/ref/WienerProcess.html
+        /// represents a Wiener process with a drift μ and volatility σ.
+        /// https://reference.wolfram.com/language/ref/WienerProcess.html
         ///</summary>
         public static Engine WienerProcess(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1130,8 +1130,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a standard Wiener process with drift 0 and volatility 1.
-        ///https://reference.wolfram.com/language/ref/WienerProcess.html
+        /// represents a standard Wiener process with drift 0 and volatility 1.
+        /// https://reference.wolfram.com/language/ref/WienerProcess.html
         ///</summary>
         public static Engine WienerProcess(this Engine en, string? name = null)
         {
@@ -1139,8 +1139,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Wigner D-function .
-        ///https://reference.wolfram.com/language/ref/WignerD.html
+        /// gives the Wigner D-function .
+        /// https://reference.wolfram.com/language/ref/WignerD.html
         ///</summary>
         public static Engine WignerD(this Engine en, List<object> arg0, object arg1, object arg2, object arg3, string? name = null)
         {
@@ -1148,8 +1148,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Wigner D-function .
-        ///https://reference.wolfram.com/language/ref/WignerD.html
+        /// gives the Wigner D-function .
+        /// https://reference.wolfram.com/language/ref/WignerD.html
         ///</summary>
         public static Engine WignerD(this Engine en, List<object> arg0, object arg1, object arg2, string? name = null)
         {
@@ -1157,8 +1157,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Wigner D-function .
-        ///https://reference.wolfram.com/language/ref/WignerD.html
+        /// gives the Wigner D-function .
+        /// https://reference.wolfram.com/language/ref/WignerD.html
         ///</summary>
         public static Engine WignerD(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -1166,8 +1166,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Wigner semicircle distribution with radius r centered at the origin.
-        ///https://reference.wolfram.com/language/ref/WignerSemicircleDistribution.html
+        /// represents a Wigner semicircle distribution with radius r centered at the origin.
+        /// https://reference.wolfram.com/language/ref/WignerSemicircleDistribution.html
         ///</summary>
         public static Engine WignerSemicircleDistribution(this Engine en, object arg0, string? name = null)
         {
@@ -1175,8 +1175,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Wigner semicircle distribution with radius r centered at a.
-        ///https://reference.wolfram.com/language/ref/WignerSemicircleDistribution.html
+        /// represents a Wigner semicircle distribution with radius r centered at a.
+        /// https://reference.wolfram.com/language/ref/WignerSemicircleDistribution.html
         ///</summary>
         public static Engine WignerSemicircleDistribution(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1184,8 +1184,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the values of the specified property for the given item.
-        ///https://reference.wolfram.com/language/ref/WikidataData.html
+        /// gives the values of the specified property for the given item.
+        /// https://reference.wolfram.com/language/ref/WikidataData.html
         ///</summary>
         public static Engine WikidataData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1193,8 +1193,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives values for each of the itemi.
-        ///https://reference.wolfram.com/language/ref/WikidataData.html
+        /// gives values for each of the itemi.
+        /// https://reference.wolfram.com/language/ref/WikidataData.html
         ///</summary>
         public static Engine WikidataData(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -1202,8 +1202,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives values for each of the propertyi.
-        ///https://reference.wolfram.com/language/ref/WikidataData.html
+        /// gives values for each of the propertyi.
+        /// https://reference.wolfram.com/language/ref/WikidataData.html
         ///</summary>
         public static Engine WikidataData(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -1211,8 +1211,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns a list of Wikidata items whose labels include the given keywords.
-        ///https://reference.wolfram.com/language/ref/WikidataSearch.html
+        /// returns a list of Wikidata items whose labels include the given keywords.
+        /// https://reference.wolfram.com/language/ref/WikidataSearch.html
         ///</summary>
         public static Engine WikidataSearch(this Engine en, object arg0, string? name = null)
         {
@@ -1220,8 +1220,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the plain text of the specified Wikipedia article.
-        ///https://reference.wolfram.com/language/ref/WikipediaData.html
+        /// gives the plain text of the specified Wikipedia article.
+        /// https://reference.wolfram.com/language/ref/WikipediaData.html
         ///</summary>
         public static Engine WikipediaData(this Engine en, object arg0, string? name = null)
         {
@@ -1229,8 +1229,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value of the specified property, modified by optional parameters, for the given Wikipedia article.
-        ///https://reference.wolfram.com/language/ref/WikipediaData.html
+        /// gives the value of the specified property, modified by optional parameters, for the given Wikipedia article.
+        /// https://reference.wolfram.com/language/ref/WikipediaData.html
         ///</summary>
         public static Engine WikipediaData(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1238,8 +1238,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns a list of Wikipedia articles whose titles include the given keywords.
-        ///https://reference.wolfram.com/language/ref/WikipediaSearch.html
+        /// returns a list of Wikipedia articles whose titles include the given keywords.
+        /// https://reference.wolfram.com/language/ref/WikipediaSearch.html
         ///</summary>
         public static Engine WikipediaSearch(this Engine en, object arg0, string? name = null)
         {
@@ -1247,8 +1247,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns a list of Wikipedia articles whose titles include the given keywords.
-        ///https://reference.wolfram.com/language/ref/WikipediaSearch.html
+        /// returns a list of Wikipedia articles whose titles include the given keywords.
+        /// https://reference.wolfram.com/language/ref/WikipediaSearch.html
         ///</summary>
         public static Engine WikipediaSearch(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1256,8 +1256,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives Wilks's  for the matrices m1 and m2.
-        ///https://reference.wolfram.com/language/ref/WilksW.html
+        /// gives Wilks's  for the matrices m1 and m2.
+        /// https://reference.wolfram.com/language/ref/WilksW.html
         ///</summary>
         public static Engine WilksW(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1265,8 +1265,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///tests whether the matrices m1 and m2 are independent.
-        ///https://reference.wolfram.com/language/ref/WilksWTest.html
+        /// tests whether the matrices m1 and m2 are independent.
+        /// https://reference.wolfram.com/language/ref/WilksWTest.html
         ///</summary>
         public static Engine WilksWTest(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1274,8 +1274,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the most recent measurement for wind direction near the current location.
-        ///https://reference.wolfram.com/language/ref/WindDirectionData.html
+        /// gives the most recent measurement for wind direction near the current location.
+        /// https://reference.wolfram.com/language/ref/WindDirectionData.html
         ///</summary>
         public static Engine WindDirectionData(this Engine en, string? name = null)
         {
@@ -1283,8 +1283,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the wind direction value for the specified time near the current location.
-        ///https://reference.wolfram.com/language/ref/WindDirectionData.html
+        /// gives the wind direction value for the specified time near the current location.
+        /// https://reference.wolfram.com/language/ref/WindDirectionData.html
         ///</summary>
         public static Engine WindDirectionData(this Engine en, object arg0, string? name = null)
         {
@@ -1292,8 +1292,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value or values for the specified date and location.
-        ///https://reference.wolfram.com/language/ref/WindDirectionData.html
+        /// gives the value or values for the specified date and location.
+        /// https://reference.wolfram.com/language/ref/WindDirectionData.html
         ///</summary>
         public static Engine WindDirectionData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1301,8 +1301,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives values for all specified locations on the specified dates.
-        ///https://reference.wolfram.com/language/ref/WindDirectionData.html
+        /// gives values for all specified locations on the specified dates.
+        /// https://reference.wolfram.com/language/ref/WindDirectionData.html
         ///</summary>
         public static Engine WindDirectionData(this Engine en, List<object> arg0, List<object> arg1, string? name = null)
         {
@@ -1310,8 +1310,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the count of the number of times a closed curve winds around a point p.
-        ///https://reference.wolfram.com/language/ref/WindingCount.html
+        /// gives the count of the number of times a closed curve winds around a point p.
+        /// https://reference.wolfram.com/language/ref/WindingCount.html
         ///</summary>
         public static Engine WindingCount(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1319,8 +1319,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a polygon representing all points for which the closed contour p1,p2,…,pn,p1 winds around at least once.
-        ///https://reference.wolfram.com/language/ref/WindingPolygon.html
+        /// gives a polygon representing all points for which the closed contour p1,p2,…,pn,p1 winds around at least once.
+        /// https://reference.wolfram.com/language/ref/WindingPolygon.html
         ///</summary>
         public static Engine WindingPolygon(this Engine en, List<object> arg0, string? name = null)
         {
@@ -1328,8 +1328,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a polygon from the closed contours p11,p12,… and p21,p22,….
-        ///https://reference.wolfram.com/language/ref/WindingPolygon.html
+        /// gives a polygon from the closed contours p11,p12,… and p21,p22,….
+        /// https://reference.wolfram.com/language/ref/WindingPolygon.html
         ///</summary>
         public static Engine WindingPolygon(this Engine en, List<object> arg0, List<object> arg1, string? name = null)
         {
@@ -1337,8 +1337,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///uses the specified winding rule "wrule" to define the polygon.
-        ///https://reference.wolfram.com/language/ref/WindingPolygon.html
+        /// uses the specified winding rule "wrule" to define the polygon.
+        /// https://reference.wolfram.com/language/ref/WindingPolygon.html
         ///</summary>
         public static Engine WindingPolygon(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1346,8 +1346,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the most recent measurement for wind speed near the current location.
-        ///https://reference.wolfram.com/language/ref/WindSpeedData.html
+        /// gives the most recent measurement for wind speed near the current location.
+        /// https://reference.wolfram.com/language/ref/WindSpeedData.html
         ///</summary>
         public static Engine WindSpeedData(this Engine en, string? name = null)
         {
@@ -1355,8 +1355,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the wind speed value for the specified time near the current location.
-        ///https://reference.wolfram.com/language/ref/WindSpeedData.html
+        /// gives the wind speed value for the specified time near the current location.
+        /// https://reference.wolfram.com/language/ref/WindSpeedData.html
         ///</summary>
         public static Engine WindSpeedData(this Engine en, object arg0, string? name = null)
         {
@@ -1364,8 +1364,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value or values for the specified date and location.
-        ///https://reference.wolfram.com/language/ref/WindSpeedData.html
+        /// gives the value or values for the specified date and location.
+        /// https://reference.wolfram.com/language/ref/WindSpeedData.html
         ///</summary>
         public static Engine WindSpeedData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1373,8 +1373,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives values for all specified locations on the specified dates.
-        ///https://reference.wolfram.com/language/ref/WindSpeedData.html
+        /// gives values for all specified locations on the specified dates.
+        /// https://reference.wolfram.com/language/ref/WindSpeedData.html
         ///</summary>
         public static Engine WindSpeedData(this Engine en, List<object> arg0, List<object> arg1, string? name = null)
         {
@@ -1382,8 +1382,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the most recent weather station measurement for wind vector near the current location.
-        ///https://reference.wolfram.com/language/ref/WindVectorData.html
+        /// gives the most recent weather station measurement for wind vector near the current location.
+        /// https://reference.wolfram.com/language/ref/WindVectorData.html
         ///</summary>
         public static Engine WindVectorData(this Engine en, string? name = null)
         {
@@ -1391,8 +1391,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the wind vector value for the specified time near the current location.
-        ///https://reference.wolfram.com/language/ref/WindVectorData.html
+        /// gives the wind vector value for the specified time near the current location.
+        /// https://reference.wolfram.com/language/ref/WindVectorData.html
         ///</summary>
         public static Engine WindVectorData(this Engine en, object arg0, string? name = null)
         {
@@ -1400,8 +1400,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value or values for the specified date and location.
-        ///https://reference.wolfram.com/language/ref/WindVectorData.html
+        /// gives the value or values for the specified date and location.
+        /// https://reference.wolfram.com/language/ref/WindVectorData.html
         ///</summary>
         public static Engine WindVectorData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1409,8 +1409,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives values for all specified locations on the specified dates.
-        ///https://reference.wolfram.com/language/ref/WindVectorData.html
+        /// gives values for all specified locations on the specified dates.
+        /// https://reference.wolfram.com/language/ref/WindVectorData.html
         ///</summary>
         public static Engine WindVectorData(this Engine en, List<object> arg0, List<object> arg1, string? name = null)
         {
@@ -1418,8 +1418,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the mean of the elements in list after replacing the fraction f of the smallest and largest elements by the remaining extreme values.
-        ///https://reference.wolfram.com/language/ref/WinsorizedMean.html
+        /// gives the mean of the elements in list after replacing the fraction f of the smallest and largest elements by the remaining extreme values.
+        /// https://reference.wolfram.com/language/ref/WinsorizedMean.html
         ///</summary>
         public static Engine WinsorizedMean(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1427,8 +1427,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the mean when the fraction f1 of the smallest elements and the fraction f2 of the largest elements are replaced by the remaining extreme values.
-        ///https://reference.wolfram.com/language/ref/WinsorizedMean.html
+        /// gives the mean when the fraction f1 of the smallest elements and the fraction f2 of the largest elements are replaced by the remaining extreme values.
+        /// https://reference.wolfram.com/language/ref/WinsorizedMean.html
         ///</summary>
         public static Engine WinsorizedMean(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -1436,8 +1436,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the 5% winsorized mean WinsorizedMean[list,0.05].
-        ///https://reference.wolfram.com/language/ref/WinsorizedMean.html
+        /// gives the 5% winsorized mean WinsorizedMean[list,0.05].
+        /// https://reference.wolfram.com/language/ref/WinsorizedMean.html
         ///</summary>
         public static Engine WinsorizedMean(this Engine en, object arg0, string? name = null)
         {
@@ -1445,8 +1445,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the variance of the elements in list after replacing the fraction f of the smallest and largest elements by the remaining extreme values.
-        ///https://reference.wolfram.com/language/ref/WinsorizedVariance.html
+        /// gives the variance of the elements in list after replacing the fraction f of the smallest and largest elements by the remaining extreme values.
+        /// https://reference.wolfram.com/language/ref/WinsorizedVariance.html
         ///</summary>
         public static Engine WinsorizedVariance(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1454,8 +1454,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the variance when the fraction f1 of the smallest elements and the fraction f2 of the largest elements are replaced by the remaining extreme values.
-        ///https://reference.wolfram.com/language/ref/WinsorizedVariance.html
+        /// gives the variance when the fraction f1 of the smallest elements and the fraction f2 of the largest elements are replaced by the remaining extreme values.
+        /// https://reference.wolfram.com/language/ref/WinsorizedVariance.html
         ///</summary>
         public static Engine WinsorizedVariance(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -1463,8 +1463,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the 5% winsorized variance WinsorizedVariance[list,0.05].
-        ///https://reference.wolfram.com/language/ref/WinsorizedVariance.html
+        /// gives the 5% winsorized variance WinsorizedVariance[list,0.05].
+        /// https://reference.wolfram.com/language/ref/WinsorizedVariance.html
         ///</summary>
         public static Engine WinsorizedVariance(this Engine en, object arg0, string? name = null)
         {
@@ -1472,8 +1472,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///represents a Wishart matrix distribution with ν degrees of freedom and covariance matrix Σ.
-        ///https://reference.wolfram.com/language/ref/WishartMatrixDistribution.html
+        /// represents a Wishart matrix distribution with ν degrees of freedom and covariance matrix Σ.
+        /// https://reference.wolfram.com/language/ref/WishartMatrixDistribution.html
         ///</summary>
         public static Engine WishartMatrixDistribution(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1481,8 +1481,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///specifies that all occurrences of the symbols x, y, … in expr should be replaced by x0, y0, ….
-        ///https://reference.wolfram.com/language/ref/With.html
+        /// specifies that all occurrences of the symbols x, y, … in expr should be replaced by x0, y0, ….
+        /// https://reference.wolfram.com/language/ref/With.html
         ///</summary>
         public static Engine With(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -1490,8 +1490,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///evaluates expr, running cleanup before returning the result, even if an abort, throw, etc. was generated during the evaluation of expr.
-        ///https://reference.wolfram.com/language/ref/WithCleanup.html
+        /// evaluates expr, running cleanup before returning the result, even if an abort, throw, etc. was generated during the evaluation of expr.
+        /// https://reference.wolfram.com/language/ref/WithCleanup.html
         ///</summary>
         public static Engine WithCleanup(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1499,8 +1499,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///evaluates init before evaluating expr, blocking aborts, throws, etc. in both init and cleanup.
-        ///https://reference.wolfram.com/language/ref/WithCleanup.html
+        /// evaluates init before evaluating expr, blocking aborts, throws, etc. in both init and cleanup.
+        /// https://reference.wolfram.com/language/ref/WithCleanup.html
         ///</summary>
         public static Engine WithCleanup(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1508,8 +1508,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///locks the file path, evaluates expr, then releases the file.
-        ///https://reference.wolfram.com/language/ref/WithLock.html
+        /// locks the file path, evaluates expr, then releases the file.
+        /// https://reference.wolfram.com/language/ref/WithLock.html
         ///</summary>
         public static Engine WithLock(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1517,8 +1517,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///sends query to Wolfram|Alpha and imports the output.
-        ///https://reference.wolfram.com/language/ref/WolframAlpha.html
+        /// sends query to Wolfram|Alpha and imports the output.
+        /// https://reference.wolfram.com/language/ref/WolframAlpha.html
         ///</summary>
         public static Engine WolframAlpha(this Engine en, object arg0, string? name = null)
         {
@@ -1526,8 +1526,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///imports the output according to the specified format.
-        ///https://reference.wolfram.com/language/ref/WolframAlpha.html
+        /// imports the output according to the specified format.
+        /// https://reference.wolfram.com/language/ref/WolframAlpha.html
         ///</summary>
         public static Engine WolframAlpha(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1535,8 +1535,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the value of the specified property for the Wolfram Language symbol entity.
-        ///https://reference.wolfram.com/language/ref/WolframLanguageData.html
+        /// gives the value of the specified property for the Wolfram Language symbol entity.
+        /// https://reference.wolfram.com/language/ref/WolframLanguageData.html
         ///</summary>
         public static Engine WolframLanguageData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1544,8 +1544,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of property values for the specified Wolfram Language symbol entities.
-        ///https://reference.wolfram.com/language/ref/WolframLanguageData.html
+        /// gives a list of property values for the specified Wolfram Language symbol entities.
+        /// https://reference.wolfram.com/language/ref/WolframLanguageData.html
         ///</summary>
         public static Engine WolframLanguageData(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -1553,8 +1553,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the specified annotation associated with the given property.
-        ///https://reference.wolfram.com/language/ref/WolframLanguageData.html
+        /// gives the specified annotation associated with the given property.
+        /// https://reference.wolfram.com/language/ref/WolframLanguageData.html
         ///</summary>
         public static Engine WolframLanguageData(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1562,8 +1562,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///generates a word cloud graphic in which the si are sized according to their multiplicity in the list.
-        ///https://reference.wolfram.com/language/ref/WordCloud.html
+        /// generates a word cloud graphic in which the si are sized according to their multiplicity in the list.
+        /// https://reference.wolfram.com/language/ref/WordCloud.html
         ///</summary>
         public static Engine WordCloud(this Engine en, List<object> arg0, string? name = null)
         {
@@ -1571,8 +1571,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///also generates a word cloud in which the si are sized according to the weights wi.
-        ///https://reference.wolfram.com/language/ref/WordCloud.html
+        /// also generates a word cloud in which the si are sized according to the weights wi.
+        /// https://reference.wolfram.com/language/ref/WordCloud.html
         ///</summary>
         public static Engine WordCloud(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1580,8 +1580,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///also generates a word cloud in which the si are sized according to the weights wi.
-        ///https://reference.wolfram.com/language/ref/WordCloud.html
+        /// also generates a word cloud in which the si are sized according to the weights wi.
+        /// https://reference.wolfram.com/language/ref/WordCloud.html
         ///</summary>
         public static Engine WordCloud(this Engine en, List<object> arg0, List<object> arg1, string? name = null)
         {
@@ -1589,8 +1589,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the total number of words in string.
-        ///https://reference.wolfram.com/language/ref/WordCount.html
+        /// gives the total number of words in string.
+        /// https://reference.wolfram.com/language/ref/WordCount.html
         ///</summary>
         public static Engine WordCount(this Engine en, object arg0, string? name = null)
         {
@@ -1598,8 +1598,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives an association whose keys are the distinct words identified in string, and whose values give the number of times those words appear in string.
-        ///https://reference.wolfram.com/language/ref/WordCounts.html
+        /// gives an association whose keys are the distinct words identified in string, and whose values give the number of times those words appear in string.
+        /// https://reference.wolfram.com/language/ref/WordCounts.html
         ///</summary>
         public static Engine WordCounts(this Engine en, object arg0, string? name = null)
         {
@@ -1607,8 +1607,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives counts of the distinct n-grams consisting of runs of n words in string.
-        ///https://reference.wolfram.com/language/ref/WordCounts.html
+        /// gives counts of the distinct n-grams consisting of runs of n words in string.
+        /// https://reference.wolfram.com/language/ref/WordCounts.html
         ///</summary>
         public static Engine WordCounts(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1616,8 +1616,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the specified property for the English word "word".
-        ///https://reference.wolfram.com/language/ref/WordData.html
+        /// gives the specified property for the English word "word".
+        /// https://reference.wolfram.com/language/ref/WordData.html
         ///</summary>
         public static Engine WordData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1625,8 +1625,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of full word specifications representing possible uses and senses of "word".
-        ///https://reference.wolfram.com/language/ref/WordData.html
+        /// gives a list of full word specifications representing possible uses and senses of "word".
+        /// https://reference.wolfram.com/language/ref/WordData.html
         ///</summary>
         public static Engine WordData(this Engine en, object arg0, string? name = null)
         {
@@ -1634,8 +1634,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the dictionary definitions available for "word".
-        ///https://reference.wolfram.com/language/ref/WordDefinition.html
+        /// gives the dictionary definitions available for "word".
+        /// https://reference.wolfram.com/language/ref/WordDefinition.html
         ///</summary>
         public static Engine WordDefinition(this Engine en, object arg0, string? name = null)
         {
@@ -1643,8 +1643,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the frequency of word in text.
-        ///https://reference.wolfram.com/language/ref/WordFrequency.html
+        /// gives the frequency of word in text.
+        /// https://reference.wolfram.com/language/ref/WordFrequency.html
         ///</summary>
         public static Engine WordFrequency(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1652,8 +1652,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives an association of the frequencies of each of the wordi.
-        ///https://reference.wolfram.com/language/ref/WordFrequency.html
+        /// gives an association of the frequencies of each of the wordi.
+        /// https://reference.wolfram.com/language/ref/WordFrequency.html
         ///</summary>
         public static Engine WordFrequency(this Engine en, object arg0, List<object> arg1, string? name = null)
         {
@@ -1661,8 +1661,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the frequency of word in typical published English text.
-        ///https://reference.wolfram.com/language/ref/WordFrequencyData.html
+        /// gives the frequency of word in typical published English text.
+        /// https://reference.wolfram.com/language/ref/WordFrequencyData.html
         ///</summary>
         public static Engine WordFrequencyData(this Engine en, object arg0, string? name = null)
         {
@@ -1670,8 +1670,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives an association of frequencies of the wordi.
-        ///https://reference.wolfram.com/language/ref/WordFrequencyData.html
+        /// gives an association of frequencies of the wordi.
+        /// https://reference.wolfram.com/language/ref/WordFrequencyData.html
         ///</summary>
         public static Engine WordFrequencyData(this Engine en, List<object> arg0, string? name = null)
         {
@@ -1679,8 +1679,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a time series for the frequency of word in typical published English text.
-        ///https://reference.wolfram.com/language/ref/WordFrequencyData.html
+        /// gives a time series for the frequency of word in typical published English text.
+        /// https://reference.wolfram.com/language/ref/WordFrequencyData.html
         ///</summary>
         public static Engine WordFrequencyData(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1688,8 +1688,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a time series for dates specified by datespec.
-        ///https://reference.wolfram.com/language/ref/WordFrequencyData.html
+        /// gives a time series for dates specified by datespec.
+        /// https://reference.wolfram.com/language/ref/WordFrequencyData.html
         ///</summary>
         public static Engine WordFrequencyData(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1697,8 +1697,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of common words.
-        ///https://reference.wolfram.com/language/ref/WordList.html
+        /// gives a list of common words.
+        /// https://reference.wolfram.com/language/ref/WordList.html
         ///</summary>
         public static Engine WordList(this Engine en, string? name = null)
         {
@@ -1706,8 +1706,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a list of words of the specified type.
-        ///https://reference.wolfram.com/language/ref/WordList.html
+        /// gives a list of words of the specified type.
+        /// https://reference.wolfram.com/language/ref/WordList.html
         ///</summary>
         public static Engine WordList(this Engine en, object arg0, string? name = null)
         {
@@ -1715,8 +1715,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives a stemmed form of word, removing plurals, inflections, etc.
-        ///https://reference.wolfram.com/language/ref/WordStem.html
+        /// gives a stemmed form of word, removing plurals, inflections, etc.
+        /// https://reference.wolfram.com/language/ref/WordStem.html
         ///</summary>
         public static Engine WordStem(this Engine en, object arg0, string? name = null)
         {
@@ -1724,8 +1724,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives translations for word into the language lang.
-        ///https://reference.wolfram.com/language/ref/WordTranslation.html
+        /// gives translations for word into the language lang.
+        /// https://reference.wolfram.com/language/ref/WordTranslation.html
         ///</summary>
         public static Engine WordTranslation(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1733,8 +1733,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///writes the expressions expri in sequence, followed by a newline, to the specified output channel.
-        ///https://reference.wolfram.com/language/ref/Write.html
+        /// writes the expressions expri in sequence, followed by a newline, to the specified output channel.
+        /// https://reference.wolfram.com/language/ref/Write.html
         ///</summary>
         public static Engine Write(this Engine en, object arg0, object arg1, object arg2, object arg3, string? name = null)
         {
@@ -1742,8 +1742,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///writes "string" to a file, followed by a newline.
-        ///https://reference.wolfram.com/language/ref/WriteLine.html
+        /// writes "string" to a file, followed by a newline.
+        /// https://reference.wolfram.com/language/ref/WriteLine.html
         ///</summary>
         public static Engine WriteLine(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1751,8 +1751,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///writes "string" to a file.
-        ///https://reference.wolfram.com/language/ref/WriteString.html
+        /// writes "string" to a file.
+        /// https://reference.wolfram.com/language/ref/WriteString.html
         ///</summary>
         public static Engine WriteString(this Engine en, object arg0, object arg1, string? name = null)
         {
@@ -1760,8 +1760,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///converts the expri to strings, and then writes them in sequence to the specified output channel.
-        ///https://reference.wolfram.com/language/ref/WriteString.html
+        /// converts the expri to strings, and then writes them in sequence to the specified output channel.
+        /// https://reference.wolfram.com/language/ref/WriteString.html
         ///</summary>
         public static Engine WriteString(this Engine en, object arg0, object arg1, object arg2, object arg3, string? name = null)
         {
@@ -1769,8 +1769,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Wronskian determinant for the functions y1,y2,… depending on x.
-        ///https://reference.wolfram.com/language/ref/Wronskian.html
+        /// gives the Wronskian determinant for the functions y1,y2,… depending on x.
+        /// https://reference.wolfram.com/language/ref/Wronskian.html
         ///</summary>
         public static Engine Wronskian(this Engine en, List<object> arg0, object arg1, string? name = null)
         {
@@ -1778,8 +1778,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Wronskian determinant for the basis of the solutions of the linear differential equation eqn with dependent variable y and independent variable x.
-        ///https://reference.wolfram.com/language/ref/Wronskian.html
+        /// gives the Wronskian determinant for the basis of the solutions of the linear differential equation eqn with dependent variable y and independent variable x.
+        /// https://reference.wolfram.com/language/ref/Wronskian.html
         ///</summary>
         public static Engine Wronskian(this Engine en, object arg0, object arg1, object arg2, string? name = null)
         {
@@ -1787,8 +1787,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///gives the Wronskian determinant for the system of linear differential equations eqns.
-        ///https://reference.wolfram.com/language/ref/Wronskian.html
+        /// gives the Wronskian determinant for the system of linear differential equations eqns.
+        /// https://reference.wolfram.com/language/ref/Wronskian.html
         ///</summary>
         public static Engine Wronskian(this Engine en, object arg0, List<object> arg1, object arg2, string? name = null)
         {

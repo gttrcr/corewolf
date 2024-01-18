@@ -3,8 +3,8 @@ namespace CoreWolf
     public static class ExtendedFunctionsX
     {
         ///<summary>
-        ///represents the head of an XML object in symbolic XML.
-        ///https://reference.wolfram.com/language/ref/XMLObject.html
+        /// represents the head of an XML object in symbolic XML.
+        /// https://reference.wolfram.com/language/ref/XMLObject.html
         ///</summary>
         public static Engine XMLObject(this Engine en, string? name = null)
         {
@@ -12,8 +12,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///yields a TemplateObject that represents an XML template to be applied using functions like TemplateApply.
-        ///https://reference.wolfram.com/language/ref/XMLTemplate.html
+        /// yields a TemplateObject that represents an XML template to be applied using functions like TemplateApply.
+        /// https://reference.wolfram.com/language/ref/XMLTemplate.html
         ///</summary>
         public static Engine XMLTemplate(this Engine en, string? name = null)
         {
@@ -21,8 +21,8 @@ namespace CoreWolf
         }
 
         ///<summary>
-        ///returns a color from an HTML color name etc.
-        ///https://reference.wolfram.com/language/ref/XYZColor.html
+        /// returns a color from an HTML color name etc.
+        /// https://reference.wolfram.com/language/ref/XYZColor.html
         ///</summary>
         public static Engine XYZColor(this Engine en, string? name = null)
         {
