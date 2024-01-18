@@ -52,18 +52,10 @@ namespace corewolf
 
         engine() // int argc, char *argv[])
         {
-            std::system("dotnet ./WolfSocket.dll &");
-            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-
-            // we need 2 things: ip address and port number, in that order
-            // if (argc != 3)
-            // {
-            //     std::cerr << "Usage: ip_address port" << std::endl;
-            //     exit(0);
-            // } // grab the IP address and port number
-
-            char *serverIp = "127.0.1.1"; // argv[1];
-            int port = 1642;              // atoi(argv[2]);
+            std::system("python3 ./wlserver.py &");
+            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+            char *serverIp = "127.0.1.1";
+            int port = 1642;
 
             // setup a socket and connection tools
             struct hostent *host = gethostbyname(serverIp);
@@ -74,9 +66,7 @@ namespace corewolf
 
             sendSockAddr.sin_port = htons(port);
             _client_sid = socket(AF_INET, SOCK_STREAM, 0);
-            // try to connect...
             int status = connect(_client_sid, (sockaddr *)&sendSockAddr, sizeof(sendSockAddr));
-
             if (status < 0)
                 std::cout << "Error connecting to socket!" << std::endl;
             else
@@ -122,7 +112,6 @@ namespace corewolf
         {
             close(_client_sid);
             _instance = nullptr;
-            // std::cout << "Connection closed" << std::endl;
         }
 
         // ##
@@ -132,6 +121,7 @@ namespace corewolf
             return this->execute("AASTriangle[" + arg0 + "," + arg1 + "," + arg2 + "]", name);
         }
     };
+    
     engine *engine::_instance = nullptr;
 
     std::ostream &operator<<(std::ostream &os, const corewolf::engine en)

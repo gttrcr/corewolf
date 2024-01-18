@@ -1,8 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
 
 namespace CoreWolf
 {
@@ -29,14 +27,6 @@ namespace CoreWolf
                 cctor.WaitOne();
                 try
                 {
-                    // List<GttrcrGist.Process.OSCommand> killProcesses = new()
-                    // {
-                    //     { new GttrcrGist.Process.OSCommand() { Command = "lsof -i tcp:" + WLServer.Port + " | awk 'NR!=1 {print $2}' | xargs --no-run-if-empty kill -9 ", OSPlatform = OSPlatform.Linux } },
-                    //     // { new GttrcrGist.Process.OSCommand() { Command = "pgrep WolframKernel | xargs --no-run-if-empty kill -9 ", OSPlatform = OSPlatform.Linux } }
-                    // };
-                    // GttrcrGist.Process.Run(killProcesses);
-                    // Thread.Sleep(1000);
-
                     string executable = string.Empty;
                     if (GttrcrGist.Process.Exists("python"))
                         executable = "python";
@@ -60,12 +50,6 @@ namespace CoreWolf
                         }
                         catch (Exception ex)
                         {
-                            // Get stack trace for the exception with source file information
-                            StackTrace st = new(ex, true);
-                            // Get the top stack frame
-                            StackFrame? frame = st.GetFrame(0);
-                            // Get the line number from the stack frame
-                            int? line = frame?.GetFileLineNumber();
                             throw new Exception("CoreWolf: error on executing command to launch kernels " + ex.Message);
                         }
                     });
