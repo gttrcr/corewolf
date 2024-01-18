@@ -65,3 +65,8 @@ rm -rf bin obj
 cp ../README.md .
 dotnet pack -c Release
 ```
+
+### corewolf++
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Wolfram/WolframEngine/13.3/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions
+```

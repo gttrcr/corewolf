@@ -7,9 +7,17 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "out/corewolf++",
+                // "-L/usr/local/Wolfram/WolframEngine/13.3/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions",
+                // "-lWSTP64i4",
+                // "-lm",
+                // "-lpthread",
+                // "-lrt",
+                // "-lstdc++",
+                // "-ldl",
+                // "-luuid"
             ],
             "options": {
                 "cwd": "${fileDirname}"

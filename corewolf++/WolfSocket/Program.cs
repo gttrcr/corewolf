@@ -27,12 +27,12 @@ namespace WolfSocket
                 string message = Encoding.UTF8.GetString(buffer, 0, bytesReceived);
                 if (bytesReceived == 0 && string.IsNullOrEmpty(message))
                     break;
-                
+
                 engine.Execute(message);
-                Console.WriteLine("Socket server received message: " + message);
+                // Console.WriteLine("Socket server received message: " + message);
                 byte[] bytes = Encoding.UTF8.GetBytes(engine.ToString());
                 socket.Send(bytes, 0);
-                Console.WriteLine($"Socket server sent acknowledgment: " + engine.ToString());
+                // Console.WriteLine($"Socket server sent acknowledgment: " + engine.ToString());
             }
 
             socket.Disconnect(true);
@@ -42,7 +42,8 @@ namespace WolfSocket
 
         public static void Main(string[] args)
         {
-            SocketServer(new Link());
+            for (int i = 0; i < 100; i++)
+                SocketServer(new Link());
         }
     }
 }

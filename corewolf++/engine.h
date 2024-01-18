@@ -30,6 +30,7 @@ namespace corewolf
     private:
         unsigned int _client_sid;
         std::string _text;
+        static corewolf::engine *_instance;
         std::vector<std::string> _defined_functions;
         std::vector<std::string> _valid_names;
 
@@ -49,21 +50,20 @@ namespace corewolf
             _valid_names.push_back(name);
         }
 
-    public:
-        engine(int argc, char *argv[])
+        engine() // int argc, char *argv[])
         {
-            std::system("dotnet ./WolfSocket/bin/Release/net7.0/WolfSocket.dll &");
+            std::system("dotnet ./WolfSocket.dll &");
             std::this_thread::sleep_for(std::chrono::milliseconds(5000));
 
             // we need 2 things: ip address and port number, in that order
-            if (argc != 3)
-            {
-                std::cerr << "Usage: ip_address port" << std::endl;
-                exit(0);
-            } // grab the IP address and port number
+            // if (argc != 3)
+            // {
+            //     std::cerr << "Usage: ip_address port" << std::endl;
+            //     exit(0);
+            // } // grab the IP address and port number
 
-            char *serverIp = argv[1];
-            int port = atoi(argv[2]);
+            char *serverIp = "127.0.1.1"; // argv[1];
+            int port = 1642;              // atoi(argv[2]);
 
             // setup a socket and connection tools
             struct hostent *host = gethostbyname(serverIp);
@@ -79,7 +79,16 @@ namespace corewolf
 
             if (status < 0)
                 std::cout << "Error connecting to socket!" << std::endl;
-            std::cout << "Connected to the server!" << std::endl;
+            else
+                std::cout << "Connected to the server!" << std::endl;
+        }
+
+    public:
+        static corewolf::engine *get()
+        {
+            if (_instance == nullptr)
+                _instance = new corewolf::engine();
+            return _instance;
         }
 
         corewolf::engine *execute(const std::string &input, std::string name = "")
@@ -92,11 +101,11 @@ namespace corewolf
 
             int bytesRead, bytesWritten = 0;
             bytesWritten += send(_client_sid, (char *)&msg, strlen(msg), 0);
-            std::cout << "Awaiting server response..." << std::endl;
+            // std::cout << "Awaiting server response..." << std::endl;
             memset(&msg, 0, sizeof(msg)); // clear the buffer
             bytesRead += recv(_client_sid, (char *)&msg, sizeof(msg), 0);
-            if (!strcmp(msg, "exit"))
-                std::cout << "Server has quit the session" << std::endl;
+            // if (!strcmp(msg, "exit"))
+            // std::cout << "Server has quit the session" << std::endl;
 
             _text = msg;
             return this;
@@ -112,7 +121,8 @@ namespace corewolf
         void terminate()
         {
             close(_client_sid);
-            std::cout << "Connection closed" << std::endl;
+            _instance = nullptr;
+            // std::cout << "Connection closed" << std::endl;
         }
 
         // ##
@@ -122,6 +132,7 @@ namespace corewolf
             return this->execute("AASTriangle[" + arg0 + "," + arg1 + "," + arg2 + "]", name);
         }
     };
+    engine *engine::_instance = nullptr;
 
     std::ostream &operator<<(std::ostream &os, const corewolf::engine en)
     {

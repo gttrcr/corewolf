@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace CoreWolf
 {
@@ -19,8 +20,6 @@ namespace CoreWolf
             if (mathKernel != null)
                 return;
 
-            ip ??= Dns.GetHostEntry(Dns.GetHostName()).AddressList.ToList().Where(x => x.AddressFamily == AddressFamily.InterNetwork).ToList().First().ToString();
-
             string args = "";
             File.WriteAllText(WLServer.Name, WLServer.Code);
 
@@ -30,34 +29,50 @@ namespace CoreWolf
                 cctor.WaitOne();
                 try
                 {
-                    List<GttrcrGist.Process.OSCommand> killProcesses = new()
-                    {
-                        { new GttrcrGist.Process.OSCommand() { Command = "lsof -i tcp:" + WLServer.Port + " | awk 'NR!=1 {print $2}' | xargs --no-run-if-empty kill -9 ", OSPlatform = OSPlatform.Linux } },
-                        { new GttrcrGist.Process.OSCommand() { Command = "pgrep WolframKernel | xargs --no-run-if-empty kill -9 ", OSPlatform = OSPlatform.Linux } }
-                    };
-                    GttrcrGist.Process.Run(killProcesses);
+                    // List<GttrcrGist.Process.OSCommand> killProcesses = new()
+                    // {
+                    //     { new GttrcrGist.Process.OSCommand() { Command = "lsof -i tcp:" + WLServer.Port + " | awk 'NR!=1 {print $2}' | xargs --no-run-if-empty kill -9 ", OSPlatform = OSPlatform.Linux } },
+                    //     // { new GttrcrGist.Process.OSCommand() { Command = "pgrep WolframKernel | xargs --no-run-if-empty kill -9 ", OSPlatform = OSPlatform.Linux } }
+                    // };
+                    // GttrcrGist.Process.Run(killProcesses);
+                    // Thread.Sleep(1000);
 
                     string executable = string.Empty;
                     if (GttrcrGist.Process.Exists("python"))
                         executable = "python";
                     else if (GttrcrGist.Process.Exists("python3"))
                         executable = "python3";
+                    else
+                        throw new Exception("python and python3 was not found");
 
                     GttrcrGist.Process.Run("python3", string.Format("{0} {1}", WLServer.Name, args), () =>
                     {
-                        Thread.Sleep(2000);
-                        IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-                        IPAddress ipAddress = IPAddress.Parse(ip);
-                        IPEndPoint remoteEP = new(ipAddress, WLServer.Port);
-                        mathKernel = new(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                        mathKernel.Connect(remoteEP);
-                        cctor.ReleaseMutex();
+                        try
+                        {
+                            ip ??= Dns.GetHostEntry(Dns.GetHostName()).AddressList.ToList().Where(x => x.AddressFamily == AddressFamily.InterNetwork).ToList().First().ToString();
+                            IPAddress ipAddress = IPAddress.Parse(ip);
+                            IPEndPoint remoteEP = new(ipAddress, WLServer.Port);
+                            mathKernel = new(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+                            Thread.Sleep(2000);
+                            mathKernel.Connect(remoteEP);
+                            cctor.ReleaseMutex();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Get stack trace for the exception with source file information
+                            StackTrace st = new(ex, true);
+                            // Get the top stack frame
+                            StackFrame? frame = st.GetFrame(0);
+                            // Get the line number from the stack frame
+                            int? line = frame?.GetFileLineNumber();
+                            throw new Exception("CoreWolf: error on executing command to launch kernels " + ex.Message);
+                        }
                     });
-                    throw new Exception("python and python3 was not found");
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("CoreWolf: error on launching kernels: " + ex.Message);
+                    throw new Exception("CoreWolf: error on launching kernels " + ex.Message);
                 }
             })
             { IsBackground = true }.Start();

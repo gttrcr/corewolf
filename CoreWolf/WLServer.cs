@@ -9,6 +9,7 @@ namespace CoreWolf
 import _thread
 import time
 import errno
+import sys
 from wolframclient.evaluation import WolframLanguageSession
 from wolframclient.language import wl, wlexpr
 
@@ -21,7 +22,7 @@ def on_new_client(clientsocket, addr):
         try:
             msg = clientsocket.recv(" + PacketSize + @")
             if not msg:
-                print('Close connection from', addr)
+                # print('Close connection from', addr)
                 clientsocket.close()
                 client_number -= 1
                 break
@@ -32,50 +33,55 @@ def on_new_client(clientsocket, addr):
             if e.args[0] == errno.EWOULDBLOCK:
                 time.sleep(0.001)
             else:
-                print('Close connection from', addr)
+                # print('Close connection from', addr)
                 clientsocket.close()
                 client_number -= 1
                 break
         except:
-            print('Close connection from', addr)
+            # print('Close connection from', addr)
             clientsocket.close()
             client_number -= 1
             break
 
 s = socket.socket()
-host = socket.gethostname()
+host = socket.gethostbyname(socket.gethostname())
 port = " + WLServer.Port + @"
 
-print('Server started!')
-print('Waiting for clients...')
+# print('Server started!')
+# print('Waiting for clients...')
 
-s.bind((host, port))
+try:
+    s.bind(('', port))
+except:
+    s.close()
+    sys.exit(0)
+
 s.listen(5)
 s.setblocking(0)
-print('Starting WolframLanguageSession...')
+# print('Starting WolframLanguageSession...')
 
 try:
     session = WolframLanguageSession()
     session.evaluate(wlexpr('0'))
-    print('WolframLanguageSession() ok')
+    # print('WolframLanguageSession() ok')
 
     while True:
         try:
             if client_number == 0 and first_incoming:
-                print('No connections left. Closing')
+                # print('No connections left. Closing')
                 break
 
             c, addr = s.accept()
             client_number += 1
             first_incoming = True
-            print('Got connection from', addr, 'number', client_number)
+            # print('Got connection from', addr, 'number', client_number)
             _thread.start_new_thread(on_new_client, (c, addr))
         except:
             time.sleep(0.1)
 except:
     pass
 finally:
-    print('Closing')
+    # print('Closing')
     s.close()
     session.terminate()
 ";

@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/../out/WolfSocket.dll",
+            "program": "${workspaceFolder}/bin/Debug/net7.0/CoreWolf.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
