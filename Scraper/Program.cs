@@ -243,7 +243,8 @@ namespace Scraper
                 .Replace("this Engine en, ", "")
                 .Replace("string? name = null", "const std::string &name = \"\"")
                 .Replace("\treturn en.Execute(", "return this->execute(")
-                .Replace("string.Join(',', ", "engine::_print_vector(");
+                .Replace("string.Join(',', ", "engine::_print_vector(")
+                .Replace("+ \"{\" +", "+ std::to_string('{') +");
 
                 builtinFunctionsSourceCode = @"using System.Collections.Generic;
 
@@ -256,7 +257,9 @@ namespace CoreWolf
 }".Replace("//CHAR_HERE", ch.ToString()).Replace("//SOURCE_CODE_HERE", builtinFunctionsSourceCode);
                 File.WriteAllText(builtinFunctionsBaseFolder + "/BuiltinFunctions" + ch + ".cs", builtinFunctionsSourceCode);
 
-                extendedFunctionsSourceCode = @"namespace CoreWolf
+                extendedFunctionsSourceCode = @"using System.Collections.Generic;
+
+namespace CoreWolf
 {
     public static class ExtendedFunctions//CHAR_HERE
     {
@@ -266,7 +269,7 @@ namespace CoreWolf
                 File.WriteAllText(extendedFunctionsBaseFolder + "/ExtendedFunctions" + ch + ".cs", extendedFunctionsSourceCode);
             }
 
-            File.WriteAllText("../corewolf++/engine.h", File.ReadAllText("../corewolf++/engine.h").Replace("// ##", cppBuildinFunctionsSourceCode));
+            File.WriteAllText("../corewolf++/engine.h", File.ReadAllText("../corewolf++/engine_origin.h").Replace("        // ##", cppBuildinFunctionsSourceCode));
             GttrcrGist.Process.Run(null, "dotnet format ../CoreWolf");
         }
 
