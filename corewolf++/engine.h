@@ -1,5 +1,7 @@
 #pragma once
 
+#include "wl_server.h"
+
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -28,7 +30,6 @@ namespace corewolf
         friend std::ostream &operator<<(std::ostream &os, const corewolf::engine en);
 
     private:
-        const unsigned int _port = 1642;
         const std::string server_ip = "127.0.1.1";
         unsigned int _client_sid;
         std::string _text;
@@ -53,7 +54,10 @@ namespace corewolf
 
         engine()
         {
-            if (std::system("python3 ./wlserver.py &") < 0)
+            std::ofstream py(wl_server::name);
+            py << wl_server::code << std::endl;
+            py.close();
+            if (std::system(std::string("python3 " + wl_server::name + " &").c_str()) < 0)
                 ;
             std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
@@ -64,7 +68,7 @@ namespace corewolf
             sendSockAddr.sin_family = AF_INET;
             sendSockAddr.sin_addr.s_addr = inet_addr(inet_ntoa(*(struct in_addr *)*host->h_addr_list));
 
-            sendSockAddr.sin_port = htons(_port);
+            sendSockAddr.sin_port = htons(wl_server::port);
             _client_sid = socket(AF_INET, SOCK_STREAM, 0);
             int status = connect(_client_sid, (sockaddr *)&sendSockAddr, sizeof(sendSockAddr));
             if (status < 0)
@@ -91,7 +95,7 @@ namespace corewolf
 
         corewolf::engine *execute(const std::string &input, std::string name = "")
         {
-            char msg[131072];
+            char msg[wl_server::packet_size];
             memset(&msg, 0, sizeof(msg));
             _valid_name(name);
             std::string command = name + "=(" + input + ")";
