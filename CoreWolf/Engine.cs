@@ -11,15 +11,15 @@
         {
             Link = link;
             Text = "";
-            DefinedFunctions = new List<string>();
-            ValidNames = new List<string>();
+            DefinedFunctions = [];
+            ValidNames = [];
         }
 
         private void ValidName(ref string? name)
         {
             Random random = new();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-            name ??= new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
+            name ??= new string(Enumerable.Repeat(string.Empty, 8).Select(s => chars[random.Next(0, chars.Length)]).ToArray());  //52^8 possible conbinations
             ValidNames?.Add(name);
         }
 
