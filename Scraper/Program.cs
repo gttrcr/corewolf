@@ -46,7 +46,7 @@ namespace Scraper
             {
                 Signature = string.Empty;
                 Comment = string.Empty;
-                ArgsType = new();
+                ArgsType = [];
             }
         }
 
@@ -61,7 +61,7 @@ namespace Scraper
             {
                 Name = "";
                 Url = "";
-                Prototypes = new List<Prototype>();
+                Prototypes = [];
                 Type = Type.None;
             }
         }
@@ -76,7 +76,7 @@ namespace Scraper
                 argsScope = argsScope.Substring(0, argsScope.Length - 1);
             List<string> splits = regex.Split(argsScope).ToList().Where(x => x != "").ToList();
 
-            List<string> argsType = new();
+            List<string> argsType = [];
             for (int s = 0; s < splits.Count; s++)
             {
                 if (splits[s].StartsWith('{') && splits[s].EndsWith('}'))
@@ -106,6 +106,8 @@ namespace Scraper
         {
             const string baseUrl = "https://reference.wolfram.com";
 
+            Console.WriteLine("Creating json file from " + baseUrl + "...");
+
             HtmlWeb web = new();
             HtmlDocument doc = new();
             string? htmlMainPage = GetHTMLCode(baseUrl + "/language/guide/AlphabeticalListing");
@@ -115,7 +117,7 @@ namespace Scraper
             doc.LoadHtml(htmlMainPage);
             List<HtmlNode> nodes = doc.DocumentNode.SelectNodes("//span[@class='IFSans']").ToList();
             int downloaded = 0;
-            List<Command> commands = new();
+            List<Command> commands = [];
             nodes = nodes.GetRange(0, 10);
             Parallel.ForEach(nodes, new ParallelOptions() { MaxDegreeOfParallelism = 4 }, node =>
             {
@@ -160,6 +162,8 @@ namespace Scraper
 
         private static void CreateBuiltinFunctions()
         {
+            Console.WriteLine("CreateCSharpBuiltinFunctions...");
+
             List<Command>? commands = JsonSerializer.Deserialize<List<Command>>(File.ReadAllText(builtinSymbolsJsonFile));
             if (commands == null)
                 return;
@@ -189,13 +193,15 @@ namespace Scraper
             string cppBuildinFunctionsSourceCode = "";
             for (char ch = 'A'; ch <= 'Z'; ch++)
             {
-                List<string> extendedOverloadCheck = new();
+                List<string> extendedOverloadCheck = [];
                 string builtinFunctionsSourceCode = "";
                 string extendedFunctionsSourceCode = "";
                 List<Command> functionCommands = commands.Where(x => x.Name.StartsWith(ch) && x.Type == Type.Function).ToList();
                 for (int i = 0; i < functionCommands.Count; i++)
                 {
                     Command c = functionCommands[i];
+                    Console.WriteLine("\t" + c.Name + "...");
+
                     List<Prototype?> prototypes = c.Prototypes.GroupBy(x => string.Join("", x.ArgsType)).Select(x => x.FirstOrDefault()).ToList();
                     for (int p = 0; p < prototypes.Count; p++)
                     {
@@ -238,13 +244,13 @@ namespace Scraper
 
                 cppBuildinFunctionsSourceCode += builtinFunctionsSourceCode
                 .Replace("List<object> ", "const std::vector<std::string> &")
-                .Replace("object ", "const std::string &")
-                .Replace("public static Engine ", "corewolf::engine *")
-                .Replace("this Engine en, ", "")
-                .Replace("string? name = null", "const std::string &name = \"\"")
-                .Replace("\treturn en.Execute(", "return this->execute(")
-                .Replace("string.Join(',', ", "engine::_print_vector(")
-                .Replace("+ \"{\" +", "+ std::to_string('{') +");
+                        .Replace("object ", "const std::string &")
+                        .Replace("public static Engine ", "corewolf::engine *")
+                        .Replace("this Engine en, ", "")
+                        .Replace("string? name = null", "const std::string &name = \"\"")
+                        .Replace("\treturn en.Execute(", "return this->execute(")
+                        .Replace("string.Join(',', ", "engine::_print_vector(")
+                        .Replace("+ \"{\" +", "+ std::to_string('{') +");
 
                 builtinFunctionsSourceCode = @"using System.Collections.Generic;
 
@@ -270,6 +276,8 @@ namespace CoreWolf
             }
 
             File.WriteAllText("../corewolf++/engine.h", File.ReadAllText("../corewolf++/engine_origin.h").Replace("        // ##", cppBuildinFunctionsSourceCode));
+
+            Console.WriteLine("Formatting code...");
             GttrcrGist.Process.Run(null, "dotnet format ../CoreWolf");
         }
 
@@ -287,6 +295,8 @@ namespace CoreWolf
             Directory.CreateDirectory(extendedFunctionsBaseFolder);
 
             CreateBuiltinFunctions();
+
+            Console.WriteLine("Done");
         }
     }
 }

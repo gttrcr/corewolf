@@ -6,6 +6,22 @@
 //     {
 //         public static void Main()
 //         {
+//             Link link = new();
+//             Engine en = link.Engine;
+
+//             CoreWolf.Types.Matrix<string> array = new(2, 2);
+//             array.Set("a", 1, 1);
+//             array.Set("b", 1, 2);
+//             array.Set("c", 2, 1);
+//             array.Set("d", 2, 2);
+//             string res = en.Det(array).Text;
+
+//             CoreWolf.Types.Array<string> vect = new(3);
+//             vect.Add("x");
+//             vect.Add("0");
+//             vect.Add("1");
+//             en.Integrate("x^2", vect);
+
 //             //for (int j = 0; j < 1000; j++)
 //             Parallel.ForEach(Enumerable.Range(0, 100), j =>
 //             {
