@@ -1,6 +1,6 @@
 namespace CoreWolf.Types
 {
-    public class Array<T> : Matrix<T> where T : notnull
+    public class Array<T> : Matrix<T> where T : new()
     {
         private int _cursor = 0;
 
@@ -16,7 +16,7 @@ namespace CoreWolf.Types
 
         public void Add(T val)
         {
-            _m.SetValue(val, _cursor++);
+            M.SetValue(val, _cursor++);
         }
     }
 }

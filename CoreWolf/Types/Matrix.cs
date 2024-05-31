@@ -1,27 +1,59 @@
 namespace CoreWolf.Types
 {
-    public class Matrix<T> where T : notnull
+    public class Matrix<T> where T : new()
     {
-        protected Array _m { get; set; }
+        protected T[] M { get; set; }
+        private int[]? Dimensions { get; set; }
 
         public Matrix()
         {
-            _m = Array.Empty<T>();
+            M = [];
+            Dimensions = null;
         }
 
         public Matrix(params int[] coords)
         {
-            _m = Array.CreateInstance(typeof(T), coords);
+            M = new T[Product(coords)];
+            Array.Fill(M, new T());
+            Dimensions = coords;
+        }
+
+        private int Position(int[] coords, int[]? dimensions = null)
+        {
+            if (dimensions == null)
+            {
+                if (Dimensions == null)
+                    throw new NullReferenceException("null Dimensions");
+
+                if (Dimensions != null)
+                    dimensions = Dimensions;
+            }
+
+            coords = [.. coords.ToList().GetRange(0, coords.Length - 2), (coords[0] - 1) * dimensions[1] + coords[1]];
+            dimensions = [.. dimensions.ToList().GetRange(2, coords.Length - 1), dimensions[0] * dimensions[1]];
+
+            if (coords.Length > 1)
+                return Position(coords, dimensions);
+
+            return coords[0] - 1;
+        }
+
+        private static int Product(int[] coords)
+        {
+            int product = 1;
+            coords.ToList().ForEach(x => product *= x);
+
+            return product;
         }
 
         public void Set(T val, params int[] coords)
         {
-            _m.SetValue(val, coords.Select(x => x - 1).ToArray());
+            M[Position(coords)] = val;
         }
 
         public T Get(params int[] coords)
         {
-            return (T)_m.GetValue(coords.Select(x => x - 1).ToArray());
+            return M[Position(coords)];
         }
 
         private static bool CountWithLimits(ref int[] coords, int[] @base, int position = 0)
@@ -48,25 +80,26 @@ namespace CoreWolf.Types
             return Chunk(Extension.ToString(cs.Chunk(@base[position]).ToArray()), @base, position + 1);
         }
 
-        public T[] Flatten()
-        {
-            T[] fl = new T[_m.LongLength];
-            int[] @base = Enumerable.Range(0, _m.Rank).ToList().Select(x => _m.GetUpperBound(x) + 1).ToArray();
-            int[] coords = new int[@base.Length];
-            int i = 0;
-            do
-            {
-                fl[i++] = (T)_m.GetValue(coords);
-            }
-            while (Matrix<T>.CountWithLimits(ref coords, @base));
+        // public T[] Flatten()
+        // {
+        //     T[] fl = new T[M.LongLength];
+        //     int[] @base = Enumerable.Range(0, M.Rank).ToList().Select(x => M.GetUpperBound(x) + 1).ToArray();
+        //     int[] coords = new int[@base.Length];
+        //     int i = 0;
+        //     do
+        //     {
+        //         fl[i++] = (T)M.GetValue(coords);
+        //     }
+        //     while (Matrix<T>.CountWithLimits(ref coords, @base));
 
-            return fl;
-        }
+        //     return fl;
+        // }
 
         public override string ToString()
         {
-            int[] @base = Enumerable.Range(0, _m.Rank).ToList().Select(x => _m.GetUpperBound(x) + 1).ToArray();
-            return Chunk(Flatten().Select(x => (x?.ToString()) ?? string.Empty).ToArray(), @base);
+            // int[] @base = Enumerable.Range(0, M.Rank).ToList().Select(x => M.GetUpperBound(x) + 1).ToArray();
+            // return Chunk(Flatten().Select(x => (x?.ToString()) ?? string.Empty).ToArray(), @base);
+            return Chunk(M.Select(x => (x?.ToString()) ?? string.Empty).ToArray(), Dimensions);
         }
     }
 }
