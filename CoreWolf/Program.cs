@@ -1,4 +1,5 @@
 ﻿// using CoreWolf;
+// using CoreWolf.Types;
 
 // namespace WolfTest
 // {
@@ -9,14 +10,16 @@
 //             Link link = new();
 //             Engine en = link.Engine;
 
-//             CoreWolf.Types.Matrix<string> array = new(2, 2);
-//             array.Set("a", 1, 1);
+//             CoreWolf.Types.Matrix<ZeroString> array = new(4, 4);
+//             array.Set("a", 2, 3);
 //             array.Set("b", 1, 2);
 //             array.Set("c", 2, 1);
 //             array.Set("d", 2, 2);
+//             array.Set("e", 4, 4);
+//             array.Set("f", 1, 3);
 //             string res = en.Det(array).Text;
 
-//             CoreWolf.Types.Array<string> vect = new(3);
+//             CoreWolf.Types.Array<ZeroString> vect = new(3);
 //             vect.Add("x");
 //             vect.Add("0");
 //             vect.Add("1");

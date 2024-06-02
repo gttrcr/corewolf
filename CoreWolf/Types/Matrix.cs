@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace CoreWolf.Types
 {
     public class Matrix<T> where T : new()

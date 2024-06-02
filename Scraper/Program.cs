@@ -275,7 +275,7 @@ namespace CoreWolf
                 File.WriteAllText(extendedFunctionsBaseFolder + "/ExtendedFunctions" + ch + ".cs", extendedFunctionsSourceCode);
             }
 
-            File.WriteAllText("../corewolf++/engine.h", File.ReadAllText("../corewolf++/engine_origin.h").Replace("        // ##", cppBuildinFunctionsSourceCode));
+            // File.WriteAllText("../corewolf++/engine.h", File.ReadAllText("../corewolf++/engine_origin.h").Replace("        // ##", cppBuildinFunctionsSourceCode));
 
             Console.WriteLine("Formatting code...");
             GttrcrGist.Process.Run(null, "dotnet format ../CoreWolf");
