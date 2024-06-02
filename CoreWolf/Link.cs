@@ -17,28 +17,27 @@ namespace CoreWolf
         {
             Engine = new(this);
 
-            try
-            {
-                SocketConnect();
-                kernelIsRunning = true;
-            }
-            catch
+            while (!kernelIsRunning)
             {
                 try
                 {
                     cctor.WaitOne();
-                    if (!kernelIsRunning)
+                    SocketConnect();
+                    kernelIsRunning = true;
+                }
+                catch
+                {
+                    try
                     {
                         new Thread(() => GttrcrGist.Process.Run(null, "wolframscript -f listener.wl")) { IsBackground = true }.Start();
                         Thread.Sleep(5000);
-                    }
-                    else
                         SocketConnect();
-                    kernelIsRunning = true;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Cannot connect to any kernel @ 127.0.0.1:7734 or cannot start the kernel itself. " + ex.Message);
+                        kernelIsRunning = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Cannot connect to any kernel @ 127.0.0.1:7734 or cannot start the kernel itself. " + ex.Message);
+                    }
                 }
             }
         }

@@ -10,38 +10,67 @@ namespace Test
             Link link = new();
             Engine en = link.Engine;
 
-            CoreWolf.Types.Matrix<int> matrix = new(7, 7);
-            matrix.Set(1, 2, 3);
-            matrix.Set(1, 1, 2);
-            matrix.Set(1, 2, 1);
-            matrix.Set(1, 2, 2);
-            matrix.Set(1, 4, 4);
-            matrix.Set(1, 1, 3);
-            string res = en.Det(matrix).Text;
+            Matrix<int> matrix = new(7, 7);
+            Matrix<int> into = new(7);
+            into.Set(1, 1);
+            into.Set(1, 2);
+            into.Set(1, 3);
+            into.Set(1, 4);
+            matrix.Set(into, 1);
 
-            CoreWolf.Types.Array<ZeroString> vect = new(3);
-            vect.Add("x");
-            vect.Add("0");
-            vect.Add("1");
-            en.Integrate("x^2", vect);
+            into = new(7);
+            into.Set(1, 2);
+            into.Set(1, 3);
+            into.Set(1, 5);
+            into.Set(1, 6);
+            matrix.Set(into, 2);
 
-            //for (int j = 0; j < 1000; j++)
-            Parallel.ForEach(Enumerable.Range(0, 100), j =>
+            into = new(7);
+            into.Set(1, 3);
+            into.Set(1, 4);
+            into.Set(1, 6);
+            into.Set(1, 7);
+            matrix.Set(into, 3);
+
+            into = new(7);
+            into.Set(1, 1);
+            into.Set(1, 4);
+            into.Set(1, 5);
+            into.Set(1, 6);
+            matrix.Set(into, 4);
+
+            int max = 7;
+            for (int i1 = 0; i1 < Math.Pow(2, max); i1++)
             {
-                Link link = new();
-                Engine en = link.Engine;
-                Random rnd = new();
-                for (int i = 0; i < 100; i++)
-                {
-                    double r1 = rnd.NextDouble();
-                    double r2 = rnd.NextDouble();
-                    Console.WriteLine(double.Parse(en.Execute(r1 + "+" + r2).ToString()).Equals(r1 + r2).ToString().ToString());  //use the engine to Execute a command
-                }
+                int[] bitString1 = [.. Convert.ToString(i1, 2).PadLeft(max, '0').ToArray().Select(x => x == '0' ? 0 : 1)];
+                Matrix<int> into1 = new(max);
+                for (int j = 0; j < bitString1.Length; j++)
+                    into1.Set(bitString1[j], j + 1);
+                matrix.Set(into1, 5);
 
-                // if (j % 2 == 1)
-                //     link.Dispose();
-                // link.Close();
-            });
+                for (int i2 = 0; i2 < Math.Pow(2, max); i2++)
+                {
+                    int[] bitString2 = [.. Convert.ToString(i2, 2).PadLeft(max, '0').ToArray().Select(x => x == '0' ? 0 : 1)];
+                    Matrix<int> into2 = new(max);
+                    for (int j = 0; j < bitString2.Length; j++)
+                        into2.Set(bitString2[j], j + 1);
+                    matrix.Set(into2, 6);
+
+                    for (int i3 = 0; i3 < Math.Pow(2, max); i3++)
+                    {
+                        int[] bitString3 = [.. Convert.ToString(i3, 2).PadLeft(max, '0').ToArray().Select(x => x == '0' ? 0 : 1)];
+                        Matrix<int> into3 = new(max);
+                        for (int j = 0; j < bitString3.Length; j++)
+                            into3.Set(bitString3[j], j + 1);
+                        matrix.Set(into3, 7);
+
+                        string res = en.Det(matrix).Text;
+
+                        if (!res.Equals("0"))
+                            Console.WriteLine(into1 + "#" + into2 + "#" + into3);
+                    }
+                }
+            }
         }
     }
 }

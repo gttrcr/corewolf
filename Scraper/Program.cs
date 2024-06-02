@@ -115,7 +115,7 @@ namespace Scraper
                 return;
 
             doc.LoadHtml(htmlMainPage);
-            List<HtmlNode> nodes = doc.DocumentNode.SelectNodes("//span[@class='IFSans']").ToList();
+            List<HtmlNode> nodes = [.. doc.DocumentNode.SelectNodes("//span[@class='IFSans']")];
             int downloaded = 0;
             List<Command> commands = [];
             nodes = nodes.GetRange(0, 10);
@@ -141,7 +141,7 @@ namespace Scraper
                 }
 
                 d.LoadHtml(commandPage);
-                List<HtmlNode> functionIntros = d.DocumentNode.SelectNodes("//div[@class='functionIntro']").ToList();
+                List<HtmlNode> functionIntros = [.. d.DocumentNode.SelectNodes("//div[@class='functionIntro']")];
                 c.Prototypes = functionIntros.Select(x => new Prototype()
                 {
                     Signature = WebUtility.HtmlDecode(x.ChildNodes[1].InnerText).Trim(),
@@ -156,7 +156,7 @@ namespace Scraper
                 commands.Add(c);
             });
 
-            commands = commands.OrderBy(x => x.Name).ToList();
+            commands = [.. commands.OrderBy(x => x.Name)];
             File.WriteAllText(builtinSymbolsJsonFile, JsonSerializer.Serialize(commands));
         }
 

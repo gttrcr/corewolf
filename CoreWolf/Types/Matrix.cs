@@ -6,12 +6,12 @@ namespace CoreWolf.Types
     public class Matrix<T> where T : new()
     {
         protected T[] M { get; set; }
-        private int[]? Dimensions { get; set; }
+        private int[] Dimensions { get; set; }
 
         public Matrix()
         {
             M = [];
-            Dimensions = null;
+            Dimensions = [];
         }
 
         public Matrix(params int[] coords)
@@ -21,24 +21,21 @@ namespace CoreWolf.Types
             Dimensions = coords;
         }
 
-        private int Position(int[] coords, int[]? dimensions = null)
+        private static int Position(int[] coords, int[] dimensions)
         {
             if (dimensions == null)
-            {
-                if (Dimensions == null)
-                    throw new NullReferenceException("null Dimensions");
+                throw new NullReferenceException("null Dimensions");
 
-                if (Dimensions != null)
-                    dimensions = Dimensions;
-            }
+            if (coords.Length == 1)
+                return coords[0];
 
-            coords = [.. coords.ToList().GetRange(0, coords.Length - 2), (coords[0] - 1) * dimensions[1] + coords[1]];
+            coords = [.. coords.ToList().GetRange(0, coords.Length - 2), coords[0] * dimensions[1] + coords[1]];
             dimensions = [.. dimensions.ToList().GetRange(2, coords.Length - 1), dimensions[0] * dimensions[1]];
 
             if (coords.Length > 1)
-                return Position(coords, dimensions);
+                return Matrix<T>.Position(coords, dimensions);
 
-            return coords[0] - 1;
+            return coords[0];
         }
 
         private static int Product(int[] coords)
@@ -51,26 +48,39 @@ namespace CoreWolf.Types
 
         public void Set(T val, params int[] coords)
         {
-            M[Position(coords)] = val;
+            coords = [.. coords.Select(x => x - 1)];
+            M[Matrix<T>.Position(coords, Dimensions)] = val;
+        }
+
+        public void Set(Matrix<T> vals, params int[] coords)
+        {
+            coords = [.. coords.Select(x => x - 1)];
+            int[] counter = new int[Dimensions.Length];
+            do
+            {
+                if (counter.ToList().GetRange(0, coords.Length).SequenceEqual(coords))
+                    M[Matrix<T>.Position(counter, Dimensions)] = vals.Get([.. counter.ToList().GetRange(coords.Length, counter.Length - coords.Length).Select(x => x + 1)]);
+            } while (CountInBase(ref counter, Dimensions));
         }
 
         public T Get(params int[] coords)
         {
-            return M[Position(coords)];
+            coords = [.. coords.Select(x => x - 1)];
+            return M[Matrix<T>.Position(coords, Dimensions)];
         }
 
-        private static bool CountWithLimits(ref int[] coords, int[] @base, int position = 0)
+        private static bool CountInBase(ref int[] counter, int[] @base, int position = 0)
         {
-            if (position == coords.Length)
+            if (position == counter.Length)
                 return false;
 
-            if (coords[position] == @base[position] - 1)
+            if (counter[position] == @base[position] - 1)
             {
-                coords[position] = 0;
-                return CountWithLimits(ref coords, @base, position + 1);
+                counter[position] = 0;
+                return CountInBase(ref counter, @base, position + 1);
             }
             else
-                coords[position]++;
+                counter[position]++;
 
             return true;
         }
@@ -83,25 +93,8 @@ namespace CoreWolf.Types
             return Chunk(Extension.ToString(cs.Chunk(@base[position]).ToArray()), @base, position + 1);
         }
 
-        // public T[] Flatten()
-        // {
-        //     T[] fl = new T[M.LongLength];
-        //     int[] @base = Enumerable.Range(0, M.Rank).ToList().Select(x => M.GetUpperBound(x) + 1).ToArray();
-        //     int[] coords = new int[@base.Length];
-        //     int i = 0;
-        //     do
-        //     {
-        //         fl[i++] = (T)M.GetValue(coords);
-        //     }
-        //     while (Matrix<T>.CountWithLimits(ref coords, @base));
-
-        //     return fl;
-        // }
-
         public override string ToString()
         {
-            // int[] @base = Enumerable.Range(0, M.Rank).ToList().Select(x => M.GetUpperBound(x) + 1).ToArray();
-            // return Chunk(Flatten().Select(x => (x?.ToString()) ?? string.Empty).ToArray(), @base);
             return Chunk(M.Select(x => (x?.ToString()) ?? string.Empty).ToArray(), Dimensions);
         }
     }
