@@ -1,21 +1,21 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace CoreWolf
 {
     public class Link
     {
         private Socket? mathKernel;
-        public Engine Engine { get; private set; }
-        public static readonly int PacketSize = 131072;
         private static bool kernelIsRunning = false;
-        private static Mutex cctor = new();
+        private static readonly Mutex cctor = new();
+
+        public byte[] Buffer { get; private set; }
+        public static readonly int PacketSize = 131072;
 
         public Link()
         {
-            Engine = new(this);
+            Buffer = [];
 
             while (!kernelIsRunning)
             {
@@ -60,18 +60,14 @@ namespace CoreWolf
             mathKernel.Connect(remoteEP);
         }
 
-        public string ToEngine(string input)
+        public void ToSocket(string input)
         {
             int length = SocketCommunicate(input, out byte[] rec);
             if (length == 0)
                 throw new Exception("Link received an empty response");
 
-            string response = Encoding.ASCII.GetString(rec, 0, length);
-            Result res = JsonConvert.DeserializeObject<Result>(response);
-            if (!res.IsOk())
-                throw new Exception("Result " + res);
-
-            return res.Data;
+            Buffer = new byte[length];
+            Array.Copy(rec, Buffer, length);
         }
 
         public void Close()
@@ -84,7 +80,6 @@ namespace CoreWolf
 
         public void Dispose()
         {
-            Engine.CloseKernels(string.Empty, null);
             SocketCommunicate("Quit[]", out byte[] rec);
             Close();
         }

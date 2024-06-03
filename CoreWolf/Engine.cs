@@ -1,16 +1,18 @@
-﻿namespace CoreWolf
+﻿using System.Text;
+using Newtonsoft.Json;
+
+namespace CoreWolf
 {
     public class Engine
     {
         private Link Link { get; set; }
-        public string Text { get; private set; }
+        public string Text => ParseResponse();
         public List<string> DefinedFunctions { get; private set; }
         public List<string> ValidNames { get; private set; }
 
-        public Engine(Link link)
+        public Engine()
         {
-            Link = link;
-            Text = "";
+            Link = new();
             DefinedFunctions = [];
             ValidNames = [];
         }
@@ -26,8 +28,18 @@
         public Engine Execute(string input, string? name = null)
         {
             ValidName(ref name);
-            Text = Link.ToEngine(name + "=(" + input + ")");
+            Link.ToSocket(name + "=(" + input + ")");
             return this;
+        }
+
+        private string ParseResponse()
+        {
+            string response = Encoding.ASCII.GetString(Link.Buffer, 0, Link.Buffer.Length);
+            Result res = JsonConvert.DeserializeObject<Result>(response);
+            if (!res.IsOk())
+                throw new Exception("Result " + res);
+
+            return res.Data;
         }
 
         public void Define(string input)
@@ -40,6 +52,12 @@
         public override string ToString()
         {
             return Text;
+        }
+
+        public void Dispose()
+        {
+            this.CloseKernels(string.Empty, null);
+            Link.Dispose();
         }
     }
 }
