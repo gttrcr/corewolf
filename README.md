@@ -64,7 +64,7 @@ en.N();  // This is equivalent to en.Integrate("x^2", "{x, 2, 3}").N();
 en.Plot("Sqrt[Log[1 + x^2]]", "{x, Sin[3], 90}"); // Create a plot
 en.Export("plot.jpg"); // Export the plot as a .jpg file
 ```
-As always, you can contatenate every function. The previous example is equivalent to the following code
+As always, you can concatenate every function. The previous example is equivalent to the following code
 ```csharp
 en.Plot("Sqrt[Log[1 + x^2]]", "{x, Sin[3], 90}").Export("plot.jpg");
 ```

@@ -1,63 +1,80 @@
 # CoreWolf
 
-## What is CoreWolf?
-1. Do you use Mathematica extensively or wolfram engine/script/kernel/one/alpha?
-2. Are you looking for an **easy** and **cross-platform** library to integrate wolfram into your software?
-3. Don't you want to remember the syntax of the commands and the lexicon created for the wolfram language (WL)?
+## Overview
+CoreWolf is an open-source C# library designed to seamlessly integrate the Wolfram Language into your software applications. Whether you use Mathematica, Wolfram Engine, Wolfram Script, Wolfram Kernel, Wolfram One, or Wolfram Alpha extensively, CoreWolf provides an easy and cross-platform solution.
 
-CoreWolf is exactly what you need and didn't know you needed.
+Unlike the C# library *NETLink* developed by Wolfram, which is limited to the Windows platform, CoreWolf is developed in .NET Core, making it usable on Windows, Linux, macOS, and all other OSs supported by .NET Core.
 
-CoreWolf is an open source c# library that allows you to fully interact with wolfram language by integrating all more than 6500 buildin symbols of engine. Unlike the c# library *NETLink* developed by Wolfram but usable only on Windows platform, CoreWolf is developed in .NET Core and therefore usable on Windows, Linux, MacOS and all OS supported by .NET Core.
+## Features
+- **Cross-Platform**: Developed in .NET Core, compatible with Windows, Linux, macOS, and more.
+- **Extensive Integration**: Access and utilize over 6500 built-in symbols of the Wolfram Engine.
+- **Ease of Use**: Simplifies the syntax and command lexicon of the Wolfram Language for easier use.
 
-## How to use CoreWolf?
-The code can be compiled by running the command
+## Installation
+Clone the repository and build the library using the following command:
+```sh
+git clone git@github.com:gttrcr/corewolf.git
+cd corewolf
+dotnet build -c Release
 ```
-dotnet build
-```
-and the **CoreWolf.dll** library will be produced.
-The library can be imported into your project and used. Here are some examples:
+This will produce the **CoreWolf/bin/Release/net8.0/CoreWolf.dll** file, which can be imported into your project.
+Or download the package from nuget [https://www.nuget.org/packages/CoreWolf](https://www.nuget.org/packages/CoreWolf).
 
-### Perform a simple operation (sum)
-```
-using CoreWolf; //import the library
-Link link = new Link();  //class link
-Engine en = link.Engine;  //get the engine
-en.Execute("17+5");  //use the engine to Execute a command
-```
-At the end, the value of property Text of en (en.Text) will be 22.
+## Usage
+Here are some examples demonstrating how to use CoreWolf in your projects.
 
-### Perform more complex operations
-1. Reduction of an expression $\sin\left(x\right)^2+\cos\left(x\right)^2$
+### usings
+```csharp
+using CoreWolf;  //Core library
+using CoreWolf.Types;  //Types namespace of the core library
 ```
-en.Execute("Sin[x]^2+Cos[x]^2==1).Reduce();
-```
-The value of en.Text is the boolen string 'True'.
 
-2. Exact integration $\int_{2}^3 x^2 dx$
+### Sum
+```csharp
+Engine en = new();  //Get the instance of the engine
+en.Execute("17 + 5"); // Execute a command
+Console.WriteLine(en.Text);  // The value of en.Text will be 22
 ```
+The result of the computation is always in the `Text` property of the `Engine` class.
+
+### Expression Reduction
+```csharp
+en.Execute("Sin[x]^2 + Cos[x]^2").Reduce();
+Console.WriteLine(en.Text);  // The value of en.Text is the boolean string 'True'
+```
+
+### Exact Integration
+```csharp
 en.Integrate("x^2", "{x, 2, 3}");
 ```
 
-3. Numerical integration $\int_{2}^3 x^e dx$
-```
-en.NIntegrate("x^E", "{x, 2, 3}")
-```
-
-4. Exact integration and than its numerical evaluation $\int_{2}^3 x^2 dx$
-```
-en.Integrate("x^2", "{x, 2, 3}")
-en.N();
-//is the same as en.Integrate("x^2", "{x, 2, 3}").N();
+### Numerical Integration
+```csharp
+en.NIntegrate("x^E", "{x, 2, 3}");
 ```
 
-### Draw and export a plot
-```
-en.Plot("Sqrt[Log[1+x^2]]", "{x, Sin[3], 90}");  //create a plot
-en.Export("plot.jpg");  //export a plot
+### Exact Integration and Numerical Evaluation
+```csharp
+en.Integrate("x^2", "{x, 2, 3}");
+en.N();  // This is equivalent to en.Integrate("x^2", "{x, 2, 3}").N();
 ```
 
-### Build a new library
+### Drawing and Exporting a Plot
+```csharp
+en.Plot("Sqrt[Log[1 + x^2]]", "{x, Sin[3], 90}"); // Create a plot
+en.Export("plot.jpg"); // Export the plot as a .jpg file
 ```
+As always, you can concatenate every function. The previous example is equivalent to the following code
+```csharp
+en.Plot("Sqrt[Log[1 + x^2]]", "{x, Sin[3], 90}").Export("plot.jpg");
+```
+
+## Contribution
+Contributions are welcome! Please open issues and submit pull requests to help improve CoreWolf.
+
+### Building a New Library
+To build a new version of the CoreWolf library, follow these steps:
+```sh
 cd Scraper
 dotnet run Scraper
 cd ../CoreWolf
@@ -66,7 +83,5 @@ cp ../README.md .
 dotnet pack -c Release
 ```
 
-### corewolf++
-```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Wolfram/WolframEngine/13.3/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions
-```
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
