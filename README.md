@@ -76,7 +76,7 @@ Contributions are welcome! Please open issues and submit pull requests to help i
 To build a new version of the CoreWolf library, follow these steps:
 ```sh
 cd Scraper
-dotnet run Scraper
+# dotnet run Scraper
 cd ../CoreWolf
 rm -rf bin obj
 cp ../README.md .
