@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 
 namespace CoreWolf
@@ -29,7 +30,15 @@ namespace CoreWolf
                 {
                     try
                     {
-                        new Thread(() => GttrcrGist.Process.Run(null, "wolframscript -f listener.wl")) { IsBackground = true }.Start();
+                        string resourceName = "CoreWolf.listener.wl";
+                        using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName) ?? throw new Exception("Null resource stream"))
+                        using (StreamReader reader = new(stream))
+                        {
+                            string result = reader.ReadToEnd();
+                            File.WriteAllText(resourceName, result);
+                        }
+
+                        new Thread(() => GttrcrGist.Process.Run(null, "wolframscript -f " + resourceName)) { IsBackground = true }.Start();
                         Thread.Sleep(5000);
                         SocketConnect();
                         kernelIsRunning = true;
