@@ -6,7 +6,12 @@ namespace CoreWolf
     public class Engine
     {
         private Link Link { get; set; }
-        public string Text => ParseResponse();
+
+        public T Result<T>()
+        {
+            return (T)Convert.ChangeType(ParseResponse(), typeof(T));
+        }
+
         public List<string> DefinedFunctions { get; private set; }
         public List<string> ValidNames { get; private set; }
 
@@ -51,7 +56,7 @@ namespace CoreWolf
 
         public override string ToString()
         {
-            return Text;
+            return Result<string>();
         }
 
         public void Dispose()
