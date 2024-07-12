@@ -12,6 +12,11 @@ namespace CoreWolf
             return (T)Convert.ChangeType(ParseResponse(), typeof(T));
         }
 
+        public string Result()
+        {
+            return Result<string>();
+        }
+
         public List<string> DefinedFunctions { get; private set; }
         public List<string> ValidNames { get; private set; }
 
