@@ -10,6 +10,25 @@ namespace CoreWolf
         private Socket? mathKernel;
         private static bool kernelIsRunning = false;
         private static readonly Mutex cctor = new();
+        private static readonly string ListenerFile = "listener.wl";
+        private static readonly string ListenerContent = $@"
+SendResponse[client_, error_, result_] := WriteString[client, ""{{\""Error\"":"" <> error <> "", \""Data\"":"" <> ToString[result, InputForm] <> ""}}""]
+Quiet[Close[server]]
+
+handler[assoc_Association] :=  Module[{{client, request, svg}},
+    client = assoc[""SourceSocket""];
+    request = ByteArrayToString[assoc[""DataByteArray""]];
+    (*Echo[request, ""Received ""];*)
+    If[SyntaxQ[request],
+        SendResponse[client, ""0"", ToExpression[request]],
+        SendResponse[client, ""-1"", ""Cannot evaluate expression"" <> request]
+    ]
+]
+
+listener = SocketListen[7734, handler]
+server = listener[""Socket""]
+Pause[4294967295]
+";
 
         public byte[] Buffer { get; private set; }
         public static readonly int PacketSize = 131072;
@@ -30,15 +49,8 @@ namespace CoreWolf
                 {
                     try
                     {
-                        string resourceName = "CoreWolf.listener.wl";
-                        using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName) ?? throw new Exception("Null resource stream"))
-                        using (StreamReader reader = new(stream))
-                        {
-                            string result = reader.ReadToEnd();
-                            File.WriteAllText(resourceName, result);
-                        }
-
-                        new Thread(() => GttrcrGist.Process.Run(null, "wolframscript -f " + resourceName)) { IsBackground = true }.Start();
+                        File.WriteAllText(ListenerFile, ListenerContent);
+                        new Thread(() => GttrcrGist.Process.Run(null, $"wolframscript -f {ListenerFile}")) { IsBackground = true }.Start();
                         Thread.Sleep(5000);
                         SocketConnect();
                         kernelIsRunning = true;
