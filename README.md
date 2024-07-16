@@ -33,7 +33,8 @@ using CoreWolf.Types;  //Types namespace of the core library
 ```csharp
 Engine en = new();  //Get the instance of the engine
 en.Execute("17 + 5"); // Execute a command
-Console.WriteLine(en.Text);  // The value of en.Text will be 22
+Console.WriteLine(en.Result());  // The value of en.Text will be 22
+Console.WriteLine(en.Result<int>()); // Parse the result
 ```
 The result of the computation is always in the `Text` property of the `Engine` class.
 
@@ -71,6 +72,16 @@ en.Plot("Sqrt[Log[1 + x^2]]", "{x, Sin[3], 90}").Export("plot.jpg");
 
 ## Contribution
 Contributions are welcome! Please open issues and submit pull requests to help improve CoreWolf.
+🌟 **Join the CoreWolf Project!** 🌟
+
+Are you passionate about the Wolfram Language and eager to integrate it seamlessly across various programming languages? CoreWolf is the open-source C# library that brings the power of Wolfram Language to .NET Core, enabling cross-platform compatibility.
+
+We're looking for enthusiastic contributors to help expand CoreWolf's capabilities, including upcoming integrations with C++, Java, and Python. Whether you're a seasoned developer or a curious learner, your contributions are welcome!
+
+✨ **Why Join?**
+- Be part of an innovative project
+- Collaborate with a dynamic community
+- Expand your coding skills and knowledge of Wolfram Language
 
 ### Building a New Library
 To build a new version of the CoreWolf library, follow these steps:
