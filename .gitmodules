@@ -1,6 +1,6 @@
-[submodule "Scraper/GttrcrGist.Processes"]
-	path = Scraper/GttrcrGist.Processes
-	url = git@gist.github.com:adcf26e18b4e31f2f2d21c4788ecad0b.git
-[submodule "CoreWolf/GttrcrGist.Processes"]
-	path = CoreWolf/GttrcrGist.Processes
-	url = git@gist.github.com:adcf26e18b4e31f2f2d21c4788ecad0b.git
+[submodule "CoreWolf/GttrcrGist"]
+	path = CoreWolf/GttrcrGist
+	url = https://github.com/gttrcr/GttrcrGist
+[submodule "Scraper/GttrcrGist"]
+	path = Scraper/GttrcrGist
+	url = https://github.com/gttrcr/GttrcrGist

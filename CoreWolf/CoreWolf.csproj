@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
+    <PackageReference Include="VideoLibrary" Version="3.2.4" />
   </ItemGroup>
 
 </Project>
